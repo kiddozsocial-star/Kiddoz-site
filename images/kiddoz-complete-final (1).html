@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Kiddoz.lk — Sri Lanka's Trusted Baby & Kids Store | Same-Day Delivery</title>
+  <meta name="title" content="Kiddoz.lk — Sri Lanka's Trusted Baby & Kids Store | Same-Day Delivery">
+  <meta name="description" content="From newborns to teens — everything parents need. 100% genuine products, verified sellers, COD available. Free delivery over Rs. 8,500. Shop now!" />
+  <meta name="keywords" content="baby products sri lanka, kids store colombo, diapers online, baby gear, toys, school essentials">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kiddoz.lk/">
+  <meta property="og:title" content="Kiddoz.lk — Sri Lanka's Trusted Baby & Kids Store">
+  <meta property="og:description" content="From newborns to teens — everything parents need in one place. 100% genuine products, same-day delivery.">
+  <meta property="og:image" content="https://kiddoz.lk/og-image.jpg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://kiddoz.lk/">
+  <meta property="twitter:title" content="Kiddoz.lk — Baby & Kids Store">
+  <meta property="twitter:description" content="Everything parents need in one place">
+  <meta property="twitter:image" content="https://kiddoz.lk/twitter-image.jpg">
+  
+  <!-- Resource Hints -->
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Kiddoz.lk",
+    "url": "https://kiddoz.lk",
+    "logo": "https://kiddoz.lk/logo.png",
+    "description": "Sri Lanka's trusted baby & kids online store",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.7",
+      "reviewCount": "1247"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+94-77-000-0000",
+      "contactType": "Customer Service"
+    }
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            elephant:'#042F66',
+            picton:'#2DAAE1',
+            violet:'#E71784',
+            line:'#E6E9EF',
+            footerbg:'#0A1E44',
+            ink:'#0B1220',
+            success:'#10B981',
+          },
+          boxShadow:{
+            soft:'0 8px 28px rgba(4,47,102,.08)',
+            card:'0 2px 10px rgba(4,47,102,.10)',
+            elevated:'0 14px 44px rgba(4,47,102,.14)',
+          },
+          borderRadius:{ xl2:'14px' }
+        }
+      }
+    }
+  </script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html{scroll-behavior:smooth}
+    .carousel{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+    .carousel>*{scroll-snap-align:start}
+    .carousel::-webkit-scrollbar{display:none}
+    .carousel-pad{scroll-padding-inline:1rem}
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+    .reveal.show{opacity:1;transform:none}
+    .header-shadow{box-shadow:0 6px 20px rgba(4,47,102,.08)}
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+    .pulse-slow{animation:pulse 2.2s ease-in-out infinite}
+    
+    /* Rotating banner animation */
+    @keyframes slideUp {
+      0%, 33% { transform: translateY(0); opacity: 1; }
+      36%, 100% { transform: translateY(-100%); opacity: 0; }
+    }
+    .banner-item {
+      animation: slideUp 9s infinite;
+    }
+    .banner-item:nth-child(2) { animation-delay: 3s; }
+    .banner-item:nth-child(3) { animation-delay: 6s; }
+    
+    /* Motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+    
+    /* Enhanced focus */
+    *:focus-visible {
+      outline: 2px solid #2DAAE1;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #2DAAE1;
+      color: white;
+      padding: 8px 16px;
+      z-index: 200;
+      font-weight: 600;
+    }
+    .skip-link:focus { top: 0; }
+    
+    /* Mobile spacing for sticky footer */
+    @media (max-width: 767px) {
+      body { padding-bottom: 4rem; }
+    }
+    
+    /* Mobile product carousel showing 2.5 cards */
+    @media (max-width: 767px) {
+      .mobile-product-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0.75rem;
+        padding: 0 1rem;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mobile-product-grid > * {
+        flex: 0 0 calc(50% - 0.375rem);
+        scroll-snap-align: start;
+      }
+      .mobile-product-grid::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  </style>
+  
+  <!-- GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  
+  <!-- Scroll Depth Tracking -->
+  <script>
+  (function() {
+    const milestones = [25, 50, 75, 90, 100];
+    const triggered = {};
+    
+    function getScrollPercent() {
+      const h = document.documentElement, b = document.body;
+      return (h.scrollTop||b.scrollTop) / ((h.scrollHeight||b.scrollHeight) - h.clientHeight) * 100;
+    }
+    
+    function trackMilestone(percent) {
+      if (!triggered[percent]) {
+        triggered[percent] = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth', {'percent': percent});
+        }
+      }
+    }
+    
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          const scrollPercent = getScrollPercent();
+          milestones.forEach(m => { if (scrollPercent >= m) trackMilestone(m); });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
+  </script>
+</head>
+
+<body class="bg-[#F7F9FC] text-ink antialiased" x-data="home()" x-init="init()">
+
+<!-- Skip Link -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<!-- Cookie Consent -->
+<div x-show="!cookieConsent" x-cloak 
+     class="fixed bottom-20 md:bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-[90] bg-white rounded-xl2 shadow-elevated border border-line p-4">
+  <div class="flex items-start gap-3">
+    <div class="flex-1">
+      <p class="text-sm font-semibold text-elephant">🍪 We use cookies</p>
+      <p class="text-xs text-slate-600 mt-1">We use cookies to improve your experience.</p>
+    </div>
+    <button @click="acceptCookies()" class="px-4 py-2 bg-picton text-white text-sm font-semibold rounded-xl2">Accept</button>
+  </div>
+  <a href="/privacy" class="text-xs text-picton hover:underline mt-2 inline-block">Privacy Policy</a>
+</div>
+
+<!-- Rotating Top Banner -->
+<div class="bg-gradient-to-r from-picton via-violet to-picton bg-[length:200%_100%] text-white py-2 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 h-6 relative">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <a href="/free-shipping" class="banner-item absolute inset-0 flex items-center justify-center text-sm font-semibold hover:underline">
+        🚚 Free Delivery on Orders Above Rs. 8,500
+      </a>
+      <a href="/delivery" class="banner-item absolute inset-0 flex items-center justify-center text-sm font-semibold hover:underline">
+        📦 All Island Delivery • Order Today, Receive Tomorrow
+      </a>
+      <a href="/bank-offers" class="banner-item absolute inset-0 flex items-center justify-center text-sm font-semibold hover:underline">
+        💳 Special Bank Card Offers • Save Up to 20%
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-line" :class="{'header-shadow': scrolled}">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+    <!-- Logo -->
+    <a href="/" aria-label="Kiddoz Home" class="shrink-0">
+      <img src="Image/Kiddoz_logo.png"
+           alt="Kiddoz" class="h-9 w-auto rounded" />
+    </a>
+
+    <!-- Search -->
+    <form action="/search" method="get" class="hidden md:flex flex-1 max-w-2xl items-center gap-2">
+      <input type="search" placeholder="Search for diapers, toys, gifts…"
+             class="w-full h-11 rounded-xl2 border border-line px-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-picton/30" />
+      <button class="h-11 px-5 rounded-xl2 bg-elephant text-white text-sm font-semibold hover:bg-elephant/90">Search</button>
+    </form>
+
+    <!-- Nav Icons -->
+    <nav class="flex items-center gap-2">
+      <!-- Hamburger (Mobile Only) -->
+      <button @click="menuOpen = !menuOpen" class="md:hidden p-2 rounded-xl2 hover:bg-slate-50" aria-label="Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      
+      <!-- Account (Desktop Only) -->
+      <a href="/account" class="hidden md:block p-2 rounded-xl2 hover:bg-slate-50" aria-label="Account">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM5 21a7 7 0 0114 0H5z"/>
+        </svg>
+      </a>
+      
+      <!-- Cart with Preview -->
+      <div class="relative" x-data="{showCart:false}" @mouseenter="showCart=true" @mouseleave="showCart=false">
+        <a href="/cart" class="relative p-2 rounded-xl2 hover:bg-slate-50" aria-label="Cart">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.3 2.3c-.63.63-.18 1.7.71 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0"/>
+          </svg>
+          <span class="absolute -top-1 -right-1 bg-violet text-white text-[11px] font-bold px-1.5 rounded-full">2</span>
+        </a>
+        
+        <!-- Cart Preview -->
+        <div x-show="showCart" x-cloak class="absolute right-0 top-full mt-2 w-80 bg-white rounded-xl2 shadow-elevated border p-4 z-50">
+          <h3 class="font-bold text-elephant mb-3">Your Cart (2 items)</h3>
+          <div class="space-y-3 mb-3">
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1596464716121-0c7f06a7f8e1?q=80&w=100" class="w-16 h-16 rounded-xl2 object-cover">
+              <div class="flex-1"><h4 class="font-semibold text-sm">Velona Diapers M</h4><p class="text-xs text-slate-600">Rs. 1,450 × 1</p></div>
+            </div>
+          </div>
+          <div class="border-t pt-3 mb-3">
+            <div class="flex justify-between font-bold"><span>Subtotal:</span><span>Rs. 4,700</span></div>
+            <div class="h-2 bg-slate-200 rounded-full mt-2 overflow-hidden">
+              <div class="h-full bg-success w-[55%]"></div>
+            </div>
+            <p class="text-xs text-slate-600 mt-1">Add Rs. 3,800 for FREE delivery! 🎉</p>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <a href="/cart" class="h-10 border-2 border-line rounded-xl2 text-center leading-[36px] text-sm font-semibold">View Cart</a>
+            <a href="/checkout" class="h-10 bg-picton text-white rounded-xl2 text-center leading-10 text-sm font-semibold">Checkout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Mobile Search -->
+  <div class="md:hidden border-t border-line">
+    <div class="max-w-7xl mx-auto px-4 py-2">
+      <form action="/search" class="flex gap-2">
+        <input type="search" placeholder="Search for diapers, toys, gifts…"
+               class="w-full h-11 rounded-xl2 border border-line px-4 text-[15px] focus:outline-none focus:ring-2 focus:ring-picton/30" />
+        <button class="h-11 px-4 rounded-xl2 bg-elephant text-white text-sm font-semibold">Go</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+<!-- Hamburger Menu Overlay -->
+<div x-show="menuOpen" x-cloak @click="menuOpen = false"
+     class="fixed inset-0 bg-black/50 z-[100] md:hidden"
+     x-transition:enter="transition-opacity duration-300"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"></div>
+
+<!-- Hamburger Menu Panel -->
+<aside x-show="menuOpen" x-cloak @click.stop
+       class="fixed top-0 left-0 bottom-0 w-[280px] bg-white z-[101] overflow-y-auto md:hidden"
+       x-transition:enter="transition transform duration-300"
+       x-transition:enter-start="-translate-x-full"
+       x-transition:enter-end="translate-x-0">
+  
+  <div class="flex items-center justify-between p-4 border-b border-line">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-br from-picton to-violet grid place-content-center text-white font-bold">K</div>
+      <div>
+        <div class="font-bold text-elephant">Welcome!</div>
+        <a href="/account" class="text-xs text-picton" @click="menuOpen = false">Sign In →</a>
+      </div>
+    </div>
+    <button @click="menuOpen = false" class="p-2 hover:bg-slate-50 rounded-xl2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  
+  <nav class="p-4 space-y-1">
+    <div class="mb-4">
+      <div class="text-xs font-bold text-slate-500 uppercase mb-2">Shop</div>
+      <a href="/deals" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">
+        <span class="text-xl">⚡</span><span class="font-semibold">Flash Deals</span>
+      </a>
+      <a href="/bestsellers" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">
+        <span class="text-xl">❤️</span><span class="font-semibold">Best Sellers</span>
+      </a>
+      <a href="/new-arrivals" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">
+        <span class="text-xl">🆕</span><span class="font-semibold">New Arrivals</span>
+      </a>
+    </div>
+    
+    <div class="mb-4">
+      <div class="text-xs font-bold text-slate-500 uppercase mb-2">Categories</div>
+      <a href="/diapering" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">Diapering</a>
+      <a href="/feeding" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">Feeding</a>
+      <a href="/toys" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">Toys & Learning</a>
+      <a href="/gear" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">Baby Gear</a>
+    </div>
+    
+    <div class="mb-4 pt-4 border-t border-line">
+      <a href="/account" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor"><path stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM5 21a7 7 0 0114 0H5z"/></svg>
+        <span class="font-semibold">My Account</span>
+      </a>
+      <a href="/orders" @click="menuOpen = false" class="flex items-center gap-3 p-3 rounded-xl2 hover:bg-slate-50">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/></svg>
+        <span>My Orders</span>
+      </a>
+    </div>
+  </nav>
+  
+  <div class="p-4 border-t border-line bg-slate-50">
+    <a href="https://wa.me/94770000000" class="flex items-center gap-2 text-sm font-semibold text-success">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5H6.7c-.2 0-.5.1-.8.4-.3.3-1 1-.9 2.5 0 1.5 1.1 2.9 1.3 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2.1-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 22a9.9 9.9 0 01-5.03-1.38L3.2 22l1.36-3.72A9.9 9.9 0 1112 22z"/></svg>
+      Chat on WhatsApp
+    </a>
+  </div>
+</aside>
+
+<!-- Sticky Trust Band (Desktop) -->
+<div class="sticky top-16 z-40" x-show="showTrustBand" x-transition.opacity x-cloak>
+  <div class="hidden md:block bg-white/90 backdrop-blur border-y border-line">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-10 flex items-center gap-5 text-sm text-slate-700 overflow-x-auto">
+      <div class="whitespace-nowrap">✓ <span class="font-medium">100% Genuine</span></div>
+      <div class="whitespace-nowrap">🚚 Free Delivery ≥ Rs. 8,500</div>
+      <div class="whitespace-nowrap">🔄 30-Day Returns</div>
+      <div class="whitespace-nowrap">💬 24/7 Support</div>
+      <div class="whitespace-nowrap">🛡️ Kiddoz Guarantee</div>
+    </div>
+  </div>
+</div>
+
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="relative" aria-label="Hero banner">
+    <picture>
+      <source media="(min-width:1024px)" srcset="Image/dd.jpg"/>
+      <img src="Image/banner.jpeg"
+           srcset="Image/bd.webp"
+           sizes="100vw" alt="Happy Sri Lankan family"
+           class="w-full h-[45vh] md:h-[60vh] object-cover" loading="eager" fetchpriority="high" />
+    </picture>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent"></div>
+    <div class="absolute inset-0">
+      <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 h-full flex items-center">
+        <div class="reveal text-white max-w-2xl">
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight colour=red">Sri Lanka's Trusted<br>Baby & Kids Store</h1>
+          <p class="mt-3 md:mt-4 text-white/95 text-base md:text-lg">From newborns to teens — everything parents need in one place. Genuine products, verified sellers.</p>
+          <div class="mt-5 flex flex-col md:flex-row gap-3">
+            <a href="/shop" class="inline-flex items-center justify-center h-14 px-8 rounded-xl2 bg-picton text-white text-lg font-bold hover:bg-picton/90 shadow-2xl">
+              Shop Now • Free Shipping →
+            </a>
+            <a href="/new-parent" class="inline-flex items-center justify-center h-14 px-6 rounded-xl2 border-2 border-white text-white font-semibold hover:bg-white/10">
+              New Parent Guide
+            </a>
+          </div>
+          <div class="mt-3 flex items-center gap-4 text-white/90 text-sm">
+            <span>✓ Same-day Colombo</span>
+            <span>✓ COD available</span>
+            <span>✓ 50K+ parents</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Searches -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-6" aria-label="Popular searches">
+    <div class="flex items-end justify-between mb-2">
+      <h2 class="text-base md:text-lg font-semibold text-elephant/90">Popular searches</h2>
+      <a href="/search" class="text-picton/80 text-xs md:text-sm hover:underline">Explore →</a>
+    </div>
+    <div class="flex gap-2 overflow-x-auto carousel carousel-pad pb-1 -mx-4 px-4">
+      <template x-for="chip in popular" :key="chip.label">
+        <a :href="chip.href" class="inline-flex items-center h-8 px-3 rounded-full border border-line/70 bg-white hover:border-picton/50 text-[13px] whitespace-nowrap">
+          <span x-text="chip.label"></span>
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- Intent Tiles -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-8" aria-label="Shop by need">
+    <div class="mb-4">
+      <h2 class="text-2xl md:text-3xl font-extrabold text-elephant">What do you need today?</h2>
+      <p class="text-sm md:text-base text-slate-600 mt-1">Pick a path — we'll guide you.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <template x-for="t in intents" :key="t.title">
+        <a :href="t.href" class="group rounded-xl2 overflow-hidden border border-line bg-white shadow-card hover:shadow-elevated hover:-translate-y-1 transition-all">
+          <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+            <img :src="t.img" :alt="t.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" src="Image/newparent.jpg">
+          </div>
+          <div class="p-3 md:p-4">
+            <div class="text-2xl md:text-3xl mb-1" x-text="t.icon"></div>
+            <h3 class="font-bold text-base md:text-lg text-elephant" x-text="t.title"></h3>
+            <p class="text-xs md:text-sm text-slate-600 mt-0.5" x-text="t.copy"></p>
+          </div>
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- Shop by Age -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-8" x-data="{scrollBy(n){$refs.age.scrollBy({left:n,behavior:'smooth'})}}" aria-label="Shop by age">
+    <div class="flex items-end justify-between mb-3">
+      <div>
+        <h2 class="text-xl md:text-2xl font-extrabold text-elephant">Shop by Age</h2>
+        <p class="text-sm text-slate-600 mt-1">Find the right stage in seconds</p>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <button @click="scrollBy(-280)" class="h-9 w-9 grid place-content-center rounded-full bg-white border border-line hover:border-picton">‹</button>
+        <button @click="scrollBy(280)" class="h-9 w-9 grid place-content-center rounded-full bg-white border border-line hover:border-picton">›</button>
+      </div>
+    </div>
+    <div class="relative">
+      <div x-ref="age" class="flex gap-2.5 md:gap-3 overflow-x-auto carousel carousel-pad pb-1.5 -mx-4 px-4">
+        <template x-for="age in ages" :key="age.label">
+          <a :href="age.href" class="min-w-[140px] md:min-w-[180px] rounded-xl2 border border-line bg-white shadow-card hover:shadow-elevated hover:-translate-y-0.5 transition">
+            <div class="p-3 md:p-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-10 h-10 md:w-12 md:h-12 rounded-xl2 grid place-content-center bg-picton/10 text-2xl" x-text="age.icon"></div>
+                <div>
+                  <div class="font-bold text-[15px] md:text-base text-elephant" x-text="age.label"></div>
+                  <div class="text-xs md:text-sm text-slate-600" x-text="age.copy"></div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabbed Products (8 products, 2 rows) -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12" x-data="{tab:'deals'}" aria-label="Product collections">
+    <div class="flex items-center justify-between mb-4">
+      <div class="flex items-center gap-5 overflow-x-auto">
+        <button @click="tab='deals'"
+                :class="tab==='deals' ? 'text-elephant font-extrabold border-b-2 border-picton' : 'text-slate-600 font-semibold'"
+                class="pb-2 transition text-base md:text-lg flex items-center gap-2">
+          ⚡ Flash Deals
+          <span x-show="tab==='deals'" class="ml-1 bg-violet text-white text-[11px] px-2 py-0.5 rounded-full" x-text="countdown"></span>
+        </button>
+        <button @click="tab='best'"
+                :class="tab==='best' ? 'text-elephant font-extrabold border-b-2 border-picton' : 'text-slate-600 font-semibold'"
+                class="pb-2 transition text-base md:text-lg">❤️ Best Sellers</button>
+        <button @click="tab='new'"
+                :class="tab==='new' ? 'text-elephant font-extrabold border-b-2 border-picton' : 'text-slate-600 font-semibold'"
+                class="pb-2 transition text-base md:text-lg">🆕 New Arrivals</button>
+      </div>
+    </div>
+
+    <p class="text-sm text-slate-600 mb-3" x-show="tab==='deals'" x-cloak>Limited time steals — gone before nap time ⏰</p>
+    <p class="text-sm text-slate-600 mb-3" x-show="tab==='best'" x-cloak>The favorites 50,000+ parents can't live without ❤️</p>
+    <p class="text-sm text-slate-600 mb-3" x-show="tab==='new'" x-cloak>Fresh finds for your growing little world 🌱</p>
+
+    <!-- Flash Deals Panel -->
+    <div :hidden="tab!=='deals'">
+      <!-- Desktop: 2 rows of 4 -->
+      <div class="hidden md:grid grid-cols-4 gap-3 md:gap-4">
+        <template x-for="p in deals" :key="p.id">
+          <article class="group relative rounded-xl2 border border-line bg-white overflow-hidden shadow-card hover:shadow-elevated hover:-translate-y-1 transition">
+            <button @click="toggleWishlist(p.id)" class="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/90 shadow-card">
+              <svg class="w-5 h-5" :class="p.wishlisted ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-slate-600'" stroke-width="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
+            <div class="absolute top-2 left-2 z-10 space-y-1">
+              <div x-show="p.discount" class="bg-violet text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow">-<span x-text="p.discount"></span>%</div>
+              <div x-show="p.stock && p.stock <= 5" class="bg-orange-500 text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow">Only <span x-text="p.stock"></span> left</div>
+            </div>
+            <a :href="'/product/'+p.id" class="block">
+              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                <img :src="p.img" :alt="p.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+              </div>
+            </a>
+            <button @click="openQuickView(p)" class="absolute inset-0 bg-black/0 hover:bg-black/10 grid place-content-center opacity-0 group-hover:opacity-100 transition z-20">
+              <span class="bg-white px-4 py-2 rounded-xl2 shadow-elevated font-semibold text-sm">Quick View</span>
+            </button>
+            <div class="p-4">
+              <a :href="'/product/'+p.id"><h3 class="text-sm md:text-base font-semibold text-elephant line-clamp-2 min-h-[2.5rem] hover:text-picton transition" x-text="p.title"></h3></a>
+              <div x-show="p.viewers" class="mt-1 text-xs text-orange-600 font-medium">🔥 <span x-text="p.viewers"></span> viewing</div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <div class="text-2xl font-black text-success" x-text="p.price"></div>
+                <div class="text-sm line-through text-slate-400" x-show="p.mrp" x-text="p.mrp"></div>
+              </div>
+              <div class="mt-2 text-xs text-success">✓ Delivery by Tomorrow</div>
+              <div class="mt-2 flex items-center gap-2 text-[11px] text-slate-600">
+                <span>✔ COD</span><span>•</span><span>↺ 30d return</span>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-xs">
+                <span>by <a :href="'/seller/'+p.sellerSlug" class="font-medium text-picton" x-text="p.seller"></a></span>
+                <span class="text-yellow-500">★★★★★</span>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+      
+      <!-- Mobile: Horizontal scroll showing 2.5 cards -->
+      <div class="md:hidden mobile-product-grid">
+        <template x-for="p in deals" :key="p.id">
+          <article class="group relative rounded-xl2 border border-line bg-white overflow-hidden shadow-card">
+            <button @click="toggleWishlist(p.id)" class="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/90 shadow-card">
+              <svg class="w-4 h-4" :class="p.wishlisted ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-slate-600'" stroke-width="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
+            <div class="absolute top-2 left-2 z-10">
+              <div x-show="p.discount" class="bg-violet text-white text-xs font-bold px-2 py-1 rounded-lg shadow">-<span x-text="p.discount"></span>%</div>
+            </div>
+            <a :href="'/product/'+p.id">
+              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                <img :src="p.img" :alt="p.title" class="w-full h-full object-cover" loading="lazy">
+              </div>
+            </a>
+            <div class="p-3">
+              <a :href="'/product/'+p.id"><h3 class="text-sm font-semibold text-elephant line-clamp-2 min-h-[2.5rem]" x-text="p.title"></h3></a>
+              <div class="mt-2 flex items-baseline gap-2">
+                <div class="text-lg font-black text-success" x-text="p.price"></div>
+                <div class="text-xs line-through text-slate-400" x-show="p.mrp" x-text="p.mrp"></div>
+              </div>
+              <div class="mt-2 text-[11px] text-slate-600">✔ COD • ↺ 30d return</div>
+            </div>
+          </article>
+        </template>
+      </div>
+      
+      <div class="mt-4 text-center md:text-right">
+        <a href="/deals" class="inline-flex items-center text-picton text-sm font-semibold hover:underline">
+          View all flash deals <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Best Sellers Panel -->
+    <div :hidden="tab!=='best'">
+      <div class="hidden md:grid grid-cols-4 gap-3 md:gap-4">
+        <template x-for="p in bests" :key="p.id">
+          <article class="group relative rounded-xl2 border border-line bg-white overflow-hidden shadow-card hover:shadow-elevated hover:-translate-y-1 transition">
+            <button @click="toggleWishlist(p.id)" class="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/90 shadow-card">
+              <svg class="w-5 h-5" :class="p.wishlisted ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-slate-600'" stroke-width="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
+            <div class="absolute top-2 left-2 z-10"><div x-show="p.discount" class="bg-violet text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow">-<span x-text="p.discount"></span>%</div></div>
+            <a :href="'/product/'+p.id" class="block">
+              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                <img :src="p.img" :alt="p.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+              </div>
+            </a>
+            <button @click="openQuickView(p)" class="absolute inset-0 bg-black/0 hover:bg-black/10 grid place-content-center opacity-0 group-hover:opacity-100 transition z-20">
+              <span class="bg-white px-4 py-2 rounded-xl2 shadow-elevated font-semibold text-sm">Quick View</span>
+            </button>
+            <div class="p-4">
+              <a :href="'/product/'+p.id"><h3 class="text-sm md:text-base font-semibold text-elephant line-clamp-2 min-h-[2.5rem] hover:text-picton transition" x-text="p.title"></h3></a>
+              <div class="mt-2 flex items-baseline gap-2">
+                <div class="text-2xl font-black text-success" x-text="p.price"></div>
+                <div class="text-sm line-through text-slate-400" x-show="p.mrp" x-text="p.mrp"></div>
+              </div>
+              <div class="mt-2 text-xs text-success">✓ Free Delivery</div>
+              <div class="mt-2 flex items-center gap-2 text-[11px] text-slate-600">
+                <span>✔ COD</span><span>•</span><span>↺ 30d return</span>
+              </div>
+              <div class="mt-2 flex items-center justify-between text-xs">
+                <span>by <a :href="'/seller/'+p.sellerSlug" class="font-medium text-picton" x-text="p.seller"></a></span>
+                <span class="text-yellow-500">★★★★★</span>
+              </div>
+            </div>
+          </article>
+        </template>
+      </div>
+      <div class="md:hidden mobile-product-grid">
+        <template x-for="p in bests" :key="p.id">
+          <article class="rounded-xl2 border border-line bg-white overflow-hidden shadow-card">
+            <a :href="'/product/'+p.id">
+              <div class="aspect-[4/3] bg-slate-100"><img :src="p.img" :alt="p.title" class="w-full h-full object-cover" loading="lazy"></div>
+            </a>
+            <div class="p-3">
+              <a :href="'/product/'+p.id"><h3 class="text-sm font-semibold text-elephant line-clamp-2 min-h-[2.5rem]" x-text="p.title"></h3></a>
+              <div class="mt-2"><div class="text-lg font-black text-success" x-text="p.price"></div></div>
+            </div>
+          </article>
+        </template>
+      </div>
+      <div class="mt-4 text-center md:text-right">
+        <a href="/bestsellers" class="inline-flex items-center text-picton text-sm font-semibold hover:underline">View all bestsellers <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <!-- New Arrivals Panel -->
+    <div :hidden="tab!=='new'">
+      <div class="hidden md:grid grid-cols-4 gap-3 md:gap-4">
+        <template x-for="p in news" :key="p.id">
+          <article class="group relative rounded-xl2 border border-line bg-white overflow-hidden shadow-card hover:shadow-elevated hover:-translate-y-1 transition">
+            <button @click="toggleWishlist(p.id)" class="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/90 shadow-card">
+              <svg class="w-5 h-5" :class="p.wishlisted ? 'fill-red-500 stroke-red-500' : 'fill-none stroke-slate-600'" stroke-width="2">
+                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </button>
+            <div class="absolute top-2 left-2 z-10 bg-picton text-white text-xs font-bold px-2.5 py-1 rounded-lg shadow">New</div>
+            <a :href="'/product/'+p.id" class="block">
+              <div class="aspect-[4/3] bg-slate-100 overflow-hidden">
+                <img :src="p.img" :alt="p.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+              </div>
+            </a>
+            <button @click="openQuickView(p)" class="absolute inset-0 bg-black/0 hover:bg-black/10 grid place-content-center opacity-0 group-hover:opacity-100 transition z-20">
+              <span class="bg-white px-4 py-2 rounded-xl2 shadow-elevated font-semibold text-sm">Quick View</span>
+            </button>
+            <div class="p-4">
+              <a :href="'/product/'+p.id"><h3 class="text-sm md:text-base font-semibold text-elephant line-clamp-2 min-h-[2.5rem] hover:text-picton transition" x-text="p.title"></h3></a>
+              <div class="mt-2"><div class="text-2xl font-black text-success" x-text="p.price"></div></div>
+              <div class="mt-2 text-xs text-success">✓ Free Delivery</div>
+              <div class="mt-2 flex items-center gap-2 text-[11px] text-slate-600">
+                <span>✔ COD</span><span>•</span><span>↺ 30d return</span>
+              </div>
+              <div class="mt-2 text-xs">by <a :href="'/seller/'+p.sellerSlug" class="font-medium text-picton" x-text="p.seller"></a></div>
+            </div>
+          </article>
+        </template>
+      </div>
+      <div class="md:hidden mobile-product-grid">
+        <template x-for="p in news" :key="p.id">
+          <article class="rounded-xl2 border border-line bg-white overflow-hidden shadow-card">
+            <a :href="'/product/'+p.id">
+              <div class="aspect-[4/3] bg-slate-100"><img :src="p.img" :alt="p.title" class="w-full h-full object-cover" loading="lazy"></div>
+            </a>
+            <div class="p-3">
+              <a :href="'/product/'+p.id"><h3 class="text-sm font-semibold text-elephant line-clamp-2 min-h-[2.5rem]" x-text="p.title"></h3></a>
+              <div class="mt-2"><div class="text-lg font-black text-success" x-text="p.price"></div></div>
+            </div>
+          </article>
+        </template>
+      </div>
+      <div class="mt-4 text-center md:text-right">
+        <a href="/new-arrivals" class="inline-flex items-center text-picton text-sm font-semibold hover:underline">View all new arrivals <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Banner -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12" aria-label="School essentials">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center rounded-xl2 border-2 border-amber-200 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 p-6 md:p-8 shadow-soft">
+      <div class="reveal">
+        <div class="inline-flex items-center gap-2 bg-violet text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3 shadow">🎒 AGES 5–14</div>
+        <h2 class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-elephant leading-tight">Not Just for Babies —<br>Everything for School, Too!</h2>
+        <p class="mt-3 text-base md:text-lg text-slate-700">From kindergarten to O/Levels. School bags, water bottles, lunch boxes, stationery, and supplies — all in one place.</p>
+        <a href="/school-essentials" class="mt-5 inline-flex items-center h-11 md:h-12 px-6 md:px-7 rounded-xl2 bg-elephant text-white font-semibold hover:bg-elephant/90 shadow-elevated">Shop School Range →</a>
+      </div>
+      <div class="reveal rounded-xl2 overflow-hidden shadow-elevated">
+        <img src="image/kss.jpg" alt="Kids with school supplies" class="w-full h-64 md:h-80 object-cover" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- Shop by Budget -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10" aria-label="Shop by budget">
+    <div class="flex items-end justify-between mb-3">
+      <div>
+        <h2 class="text-xl md:text-2xl font-extrabold text-elephant">Shop by Budget</h2>
+        <p class="text-sm text-slate-600 mt-1">Every rupee counts — shop smart 💸</p>
+      </div>
+      <a href="/budget" class="hidden md:inline text-picton text-sm hover:underline">See all →</a>
+    </div>
+    <div class="overflow-x-auto carousel carousel-pad pb-2 -mx-4 px-4">
+      <div class="inline-flex gap-2.5 md:gap-3 pr-1">
+        <template x-for="b in budgets" :key="b.label">
+          <a :href="b.href" class="inline-flex items-center h-14 md:h-16 px-6 md:px-7 rounded-full border border-line bg-white shadow-card hover:shadow-elevated hover:-translate-y-0.5 hover:border-picton transition text-base md:text-lg font-extrabold whitespace-nowrap">
+            <span x-text="b.label"></span>
+          </a>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12" aria-label="Testimonials">
+    <div class="rounded-xl2 border border-line bg-white p-6 md:p-8 shadow-soft">
+      <div class="flex items-center justify-between mb-5">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-elephant">Why Parents Trust Kiddoz</h2>
+          <p class="text-sm text-slate-600 mt-1">Real parents. Real stories. Real results.</p>
+        </div>
+        <div class="hidden md:flex items-center gap-1 text-sm">
+          <span class="text-yellow-500 text-xl">★★★★★</span>
+          <span class="font-bold text-elephant ml-1">4.7/5</span>
+          <span class="text-slate-600">(1,247 reviews)</span>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-4">
+        <figure class="reveal rounded-xl2 border border-line p-4 md:p-5 hover:shadow-card transition">
+          <figcaption class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-picton to-violet grid place-content-center text-white font-bold text-lg">A</div>
+            <div>
+              <div class="font-bold text-elephant">Amaya P.</div>
+              <div class="text-xs text-success">✔ Verified Buyer</div>
+            </div>
+          </figcaption>
+          <div class="text-yellow-500 text-sm mb-2">★★★★★</div>
+          <blockquote class="text-sm md:text-base text-slate-700">"Delivery in 4 hours to Colombo 6! Found everything for my hospital bag."</blockquote>
+          <div class="text-xs text-slate-500 mt-3">3 days ago</div>
+        </figure>
+
+        <figure class="reveal rounded-xl2 border border-line p-4 md:p-5 hover:shadow-card transition">
+          <figcaption class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-violet to-picton grid place-content-center text-white font-bold text-lg">S</div>
+            <div>
+              <div class="font-bold text-elephant">Sunil W.</div>
+              <div class="text-xs text-success">✔ Verified Buyer</div>
+            </div>
+          </figcaption>
+          <div class="text-yellow-500 text-sm mb-2">★★★★★</div>
+          <blockquote class="text-sm md:text-base text-slate-700">"Quality is excellent, packaging top-notch. Prices beat retail stores."</blockquote>
+          <div class="text-xs text-slate-500 mt-3">1 week ago</div>
+        </figure>
+
+        <figure class="reveal rounded-xl2 border border-line p-4 md:p-5 hover:shadow-card transition">
+          <figcaption class="flex items-center gap-3 mb-3">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-picton to-violet grid place-content-center text-white font-bold text-lg">P</div>
+            <div>
+              <div class="font-bold text-elephant">Priya D.</div>
+              <div class="text-xs text-success">✔ Verified Buyer</div>
+            </div>
+          </figcaption>
+          <div class="text-yellow-500 text-sm mb-2">★★★★★</div>
+          <blockquote class="text-sm md:text-base text-slate-700">"The AI tools are so helpful! Hospital List saved me hours."</blockquote>
+          <div class="text-xs text-slate-500 mt-3">2 weeks ago</div>
+        </figure>
+      </div>
+
+      <div class="mt-5 text-center">
+        <a href="/reviews" class="inline-flex items-center text-picton font-semibold hover:underline">Read all 1,247 reviews <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor"><path stroke-width="2" d="M9 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Parenting Zone -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10" x-data="{scrollBy(n){$refs.tools.scrollBy({left:n,behavior:'smooth'})}}" aria-label="AI tools">
+    <div class="flex items-end justify-between mb-3">
+      <div>
+        <h2 class="text-xl md:text-2xl font-extrabold text-elephant">🤖 Parenting Zone — Free AI Tools</h2>
+        <p class="text-sm text-slate-600 mt-1">Quick tools, big relief</p>
+      </div>
+      <div class="hidden md:flex items-center gap-2">
+        <button @click="scrollBy(-260)" class="h-9 w-9 grid place-content-center rounded-full bg-white border border-line hover:border-picton">‹</button>
+        <button @click="scrollBy(260)" class="h-9 w-9 grid place-content-center rounded-full bg-white border border-line hover:border-picton">›</button>
+      </div>
+    </div>
+    <div class="relative">
+      <div x-ref="tools" class="flex gap-2.5 md:gap-3 overflow-x-auto carousel carousel-pad pb-1.5 -mx-4 px-4">
+        <template x-for="tool in tools" :key="tool.title">
+          <a :href="tool.href" class="min-w-[140px] md:min-w-[160px] rounded-xl2 border border-line bg-white shadow-card hover:shadow-elevated hover:-translate-y-0.5 transition p-3 md:p-4">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 md:w-14 md:h-14 rounded-xl2 grid place-content-center bg-picton/10 text-2xl" x-text="tool.icon"></div>
+              <div>
+                <h3 class="font-bold text-[15px] md:text-base text-elephant line-clamp-1" x-text="tool.title"></h3>
+                <p class="text-xs text-slate-600 line-clamp-2" x-text="tool.copy"></p>
+              </div>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Toys Banner (NEW - before Top Brands) -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12" aria-label="Toys banner">
+    <a href="/toys" class="block group relative rounded-xl2 overflow-hidden shadow-elevated hover:shadow-2xl transition-all">
+      <img src="https://images.unsplash.com/photo-1558211583-d26f610c7d7a?q=80&w=1400&auto=format&fit=crop" 
+           alt="Toys Collection" 
+           class="w-full h-64 md:h-80 object-cover group-hover:scale-105 transition-transform duration-500" 
+           loading="lazy">
+      <div class="absolute inset-0 bg-gradient-to-r from-purple-900/80 via-pink-900/60 to-transparent"></div>
+      <div class="absolute inset-0 flex items-center">
+        <div class="max-w-2xl px-6 md:px-12">
+          <div class="inline-flex items-center gap-2 bg-violet text-white text-xs font-bold px-3 py-1.5 rounded-full mb-3">🧸 TOYS & LEARNING</div>
+          <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-3">Play, Learn, Grow</h2>
+          <p class="text-lg text-white/95 mb-4">Educational toys, puzzles, outdoor play, and everything that sparks imagination.</p>
+          <span class="inline-flex items-center h-12 px-6 rounded-xl2 bg-white text-purple-900 font-bold hover:bg-white/90 transition">
+            Explore Toys Collection →
+          </span>
+        </div>
+      </div>
+    </a>
+  </section>
+
+  <!-- Top Brands -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12" aria-label="Top brands">
+    <div class="flex items-end justify-between mb-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-elephant">Top Brands</h2>
+        <p class="text-sm text-slate-600 mt-1">Trusted by parents worldwide</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 md:gap-4">
+      <template x-for="b in brands" :key="b.name">
+        <a :href="b.href" class="aspect-square rounded-xl6 bg-white border border-line grid place-content-center shadow-card hover:shadow-elevated hover:-translate-y-1 transition p-3">
+          <img :src="b.logo" :alt="b.name" class="max-h-21 md:max-h-21 w-auto object-contain grayscale hover:grayscale-0 transition" loading="lazy">
+        </a>
+      </template>
+    </div>
+  </section>
+
+  <!-- Top Categories -->
+  <section class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 mt-10 md:mt-12 mb-12" aria-label="Top categories">
+    <div class="flex items-end justify-between mb-4">
+      <div>
+        <h2 class="text-2xl md:text-3xl font-extrabold text-elephant">Top Categories</h2>
+        <p class="text-sm text-slate-600 mt-1">Shop by category — everything you need</p>
+      </div>
+      <a href="/categories" class="hidden md:inline text-picton text-sm font-semibold hover:underline">View all →</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+      <template x-for="c in topCats" :key="c.title">
+        <a :href="c.href" class="group rounded-xl2 overflow-hidden border border-line bg-white shadow-card hover:shadow-elevated hover:-translate-y-1 transition">
+          <div class="h-44 md:h-56 overflow-hidden bg-slate-100">
+            <img :src="c.img" :alt="c.title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+          </div>
+          <div class="p-4">
+            <h3 class="font-bold text-lg text-elephant" x-text="c.title"></h3>
+            <p class="text-sm text-slate-600 mt-0.5" x-text="c.copy"></p>
+          </div>
+        </a>
+      </template>
+    </div>
+  </section>
+
+</main>
+
+<!-- Quick View Modal -->
+<div x-show="quickViewProduct" x-cloak class="fixed inset-0 z-[80] grid place-content-center p-4" @keydown.escape.window="quickViewProduct = null">
+  <div class="absolute inset-0 bg-black/60" @click="quickViewProduct = null"></div>
+  <div class="relative bg-white rounded-xl2 shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6">
+    <button @click="quickViewProduct = null" class="absolute top-4 right-4 p-2 rounded-xl2 hover:bg-slate-100">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <template x-if="quickViewProduct">
+      <div class="grid md:grid-cols-2 gap-6">
+        <div><img :src="quickViewProduct.img" :alt="quickViewProduct.title" class="w-full rounded-xl2"></div>
+        <div>
+          <h2 class="text-2xl font-bold text-elephant" x-text="quickViewProduct.title"></h2>
+          <div class="mt-3 flex items-baseline gap-3">
+            <div class="text-3xl font-black text-success" x-text="quickViewProduct.price"></div>
+            <div class="text-lg line-through text-slate-400" x-show="quickViewProduct.mrp" x-text="quickViewProduct.mrp"></div>
+          </div>
+          <p class="mt-4 text-slate-700">High-quality product with verified seller guarantee. Free returns within 30 days.</p>
+          <div class="mt-4 space-y-2 text-sm">
+            <div class="flex items-center gap-2"><span class="text-success">✓</span> COD Available</div>
+            <div class="flex items-center gap-2"><span class="text-success">✓</span> 30-Day Returns</div>
+            <div class="flex items-center gap-2"><span class="text-success">✓</span> 100% Genuine</div>
+          </div>
+          <div class="mt-6 flex gap-3">
+            <button class="flex-1 h-12 bg-picton text-white font-bold rounded-xl2 hover:bg-picton/90">Add to Cart</button>
+            <a :href="'/product/' + quickViewProduct.id" class="h-12 px-6 border-2 border-elephant text-elephant font-bold rounded-xl2 hover:bg-elephant hover:text-white leading-[44px]">Full Details</a>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-footerbg text-white mt-12">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 py-10 md:py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <img src="Image/Kiddoz_logo.png" alt="Kiddoz" class="h-10 w-auto mb-4 rounded">
+        <p class="text-sm text-white/85 mb-4">Kiddoz — because parenting should feel a little easier every day.</p>
+        <div class="flex items-center gap-3">
+          <svg class="w-8 h-8 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z"/></svg>
+          <div class="text-xs">
+            <div class="font-bold">256-bit SSL</div>
+            <div class="text-white/70">Secure Checkout</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Shop</h3>
+        <ul class="space-y-2 text-sm text-white/85">
+          <li><a href="/diapering" class="hover:underline">Diapering</a></li>
+          <li><a href="/feeding" class="hover:underline">Feeding</a></li>
+          <li><a href="/toys" class="hover:underline">Toys & Learning</a></li>
+          <li><a href="/gear" class="hover:underline">Baby Gear</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Help</h3>
+        <ul class="space-y-2 text-sm text-white/85">
+          <li><a href="/contact" class="hover:underline">Contact Us</a></li>
+          <li><a href="/faq" class="hover:underline">FAQs</a></li>
+          <li><a href="/track-order" class="hover:underline">Track Order</a></li>
+          <li><a href="/returns" class="hover:underline">Returns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-3">Stay Updated</h3>
+        <p class="text-sm text-white/85 mb-3">Get exclusive deals weekly.</p>
+        <form action="/newsletter" method="post" class="flex gap-2">
+          <input type="email" placeholder="Your email" class="flex-1 h-10 px-3 rounded-xl2 text-ink text-sm" required>
+          <button class="h-10 px-4 rounded-xl2 bg-picton text-white font-semibold">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="mt-8 pt-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-white/70">
+      <div>© 2025 Kiddoz.lk. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="/privacy" class="hover:underline">Privacy</a>
+        <a href="/terms" class="hover:underline">Terms</a>
+        <a href="/seller" class="hover:underline">Become a Seller</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/94770000000" class="fixed bottom-20 md:bottom-4 right-4 z-50 w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white grid place-content-center shadow-elevated hover:scale-110 transition pulse-slow" aria-label="WhatsApp" target="_blank">
+  <svg class="w-7 h-7 md:w-8 md:h-8" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-.9-.3-.1-.5-.1-.7.2-.2.3-.8 1-.9 1.2-.2.2-.4.2-.7.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.7.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2.1-.4 0-.6s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5H6.7c-.2 0-.5.1-.8.4-.3.3-1 1-.9 2.5 0 1.5 1.1 2.9 1.3 3.1.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2.1-1.4.2-.7.2-1.3.2-1.4 0-.1-.3-.2-.6-.3zM12 22a9.9 9.9 0 01-5.03-1.38L3.2 22l1.36-3.72A9.9 9.9 0 1112 22z"/></svg>
+</a>
+
+<!-- Mobile Bottom Nav (Sticky at 0px) -->
+<nav class="md:hidden fixed inset-x-0 bottom-0 z-50 bg-white border-t border-line">
+  <div class="grid grid-cols-4 h-16">
+    <a href="/" class="flex flex-col items-center justify-center gap-1 hover:bg-slate-50 text-picton">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l9-9 9 9M5 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10"/></svg>
+      <span class="text-[10px] font-semibold">Home</span>
+    </a>
+    <a href="/categories" class="flex flex-col items-center justify-center gap-1 hover:bg-slate-50 text-slate-600">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+      <span class="text-[10px] font-semibold">Shop</span>
+    </a>
+    <a href="/deals" class="flex flex-col items-center justify-center gap-1 hover:bg-slate-50 text-slate-600 relative">
+      <div class="relative">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/></svg>
+        <span class="absolute -top-1 -right-1 w-2 h-2 bg-violet rounded-full"></span>
+      </div>
+      <span class="text-[10px] font-semibold">Deals</span>
+    </a>
+    <a href="/cart" class="flex flex-col items-center justify-center gap-1 hover:bg-slate-50 text-slate-600 relative">
+      <div class="relative">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.3 2.3c-.63.63-.18 1.7.71 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <span class="absolute -top-1 -right-1 min-w-[18px] h-[18px] bg-violet text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1">2</span>
+      </div>
+      <span class="text-[10px] font-semibold">Cart</span>
+    </a>
+  </div>
+</nav>
+
+<script>
+function home(){
+  return {
+    scrolled:false,
+    showTrustBand:false,
+    countdown:'03:45:22',
+    menuOpen:false,
+    cookieConsent: localStorage.getItem('cookieConsent') === 'true',
+    quickViewProduct: null,
+
+    popular:[
+      {label:'Diapers', href:'/search?q=diapers'},
+      {label:'Baby Bottles', href:'/search?q=bottles'},
+      {label:'Strollers', href:'/search?q=strollers'},
+      {label:'School Bags', href:'/search?q=school-bags'},
+      {label:'Toys', href:'/search?q=toys'},
+      {label:'Bath & Skin', href:'/search?q=bath-skin'},
+    ],
+
+    intents:[
+      {title:'New Parent',icon:'👶',copy:'Everything for first 48 hours',href:'/new-parent',img:'Image/newparent.jpg'},
+      {title:'Quick Restock',icon:'🔄',copy:'Restock before emergency',href:'/restock',img:'Image/qg.jpg'},
+      {title:'School Essentials',icon:'🎒',copy:'From pencils to PE gear',href:'/school',img:'https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=1200&auto=format&fit=crop'},
+      {title:'Gift Shopping',icon:'🎁',copy:'Gifts for every milestone',href:'/gifts',img:'Image/gift.jpg'},
+    ],
+
+    ages:[
+      {label:'Newborn',icon:'👶',copy:'Gentle care',href:'/age/newborn'},
+      {label:'Infant',icon:'🍼',copy:'Giggles',href:'/age/infant'},
+      {label:'Toddler',icon:'🧸',copy:'First steps',href:'/age/toddler'},
+      {label:'Kids',icon:'🎨',copy:'Adventures',href:'/age/kids'},
+      {label:'School',icon:'🎒',copy:'Learning',href:'/age/school'},
+      {label:'Teen',icon:'👦',copy:'Growing up',href:'/age/teen'},
+    ],
+
+    deals:[
+      {id:1,title:'Velona Cuddles Diapers M',price:'Rs. 1,450',mrp:'Rs. 1,799',discount:19,stock:3,viewers:12,wishlisted:false,seller:'Baby Heaven',sellerSlug:'baby-heaven',img:'image/velona.webp?w=1200&auto=format&fit=crop&q=80'},
+      {id:2,title:'Farlin Feeder 240ml',price:'Rs. 3,250',mrp:'Rs. 3,699',discount:12,stock:8,viewers:5,wishlisted:false,seller:'Kiddo Store',sellerSlug:'kiddo-store',img:'image/feeder.jpg?w=1200&auto=format&fit=crop&q=80'},
+      {id:3,title:'Baby Bath Bundle',price:'Rs. 1,990',mrp:'Rs. 2,650',discount:25,stock:2,viewers:18,wishlisted:false,seller:'Tiny Tots',sellerSlug:'tiny-tots',img:'image/bathset.png'},
+      {id:4,title:'Travel Stroller',price:'Rs. 22,900',mrp:'Rs. 28,500',discount:20,wishlisted:false,seller:'Baby Gear',sellerSlug:'baby-gear',img:'image/stroller.jpg?w=1200&auto=format&fit=crop&q=80'},
+      {id:5,title:'Diaper Bag Backpack',price:'Rs. 4,500',mrp:'Rs. 5,900',discount:24,wishlisted:false,seller:'Mom Essentials',sellerSlug:'mom-essentials',img:'image/bagpack.jpg'},
+      {id:6,title:'Baby Monitor Camera',price:'Rs. 12,900',mrp:'Rs. 16,500',discount:22,wishlisted:false,seller:'Tech Kids',sellerSlug:'tech-kids',img:'image/cam.webp?q=80&w=1200&auto=format&fit=crop'},
+      {id:7,title:'Teething Toys Set',price:'Rs. 890',mrp:'Rs. 1,250',discount:29,wishlisted:false,seller:'Baby Heaven',sellerSlug:'baby-heaven',img:'image/teething.jpg'},
+      {id:8,title:'Baby Blanket Set',price:'Rs. 2,100',mrp:'Rs. 2,800',discount:25,wishlisted:false,seller:'Cozy Baby',sellerSlug:'cozy-baby',img:'image/blanket.jpg'},
+    ],
+
+    bests:[
+      {id:9,title:'Pampers Premium L',price:'Rs. 2,150',mrp:'Rs. 2,450',discount:12,wishlisted:false,seller:'Baby Heaven',sellerSlug:'baby-heaven',img:'image/Pampers.jpg'},
+      {id:10,title:'Chicco Sterilizer',price:'Rs. 8,900',mrp:'Rs. 9,999',discount:11,wishlisted:false,seller:'Kiddo Store',sellerSlug:'kiddo-store',img:'image/chicco.jpg'},
+      {id:11,title:'Play Mat',price:'Rs. 5,450',mrp:'Rs. 6,200',discount:12,wishlisted:false,seller:'Toy World',sellerSlug:'toy-world',img:'image/playmat.webp'},
+      {id:12,title:'Baby Carrier',price:'Rs. 7,900',mrp:'Rs. 9,500',discount:17,wishlisted:false,seller:'Comfort Baby',sellerSlug:'comfort-baby',img:'https://images.unsplash.com/photo-1567529692333-de9fd6772897?q=80&w=1200&auto=format&fit=crop'},
+      {id:13,title:'High Chair',price:'Rs. 15,900',mrp:'Rs. 18,500',discount:14,wishlisted:false,seller:'Baby Furniture',sellerSlug:'baby-furniture',img:'image/highc.jpg'},
+      {id:14,title:'Baby Bathtub',price:'Rs. 3,200',mrp:'Rs. 3,900',discount:18,wishlisted:false,seller:'Bath Time',sellerSlug:'bath-time',img:'https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?q=80&w=1200&auto=format&fit=crop'},
+      {id:15,title:'Nursing Pillow',price:'Rs. 2,900',mrp:'Rs. 3,500',discount:17,wishlisted:false,seller:'Mom Care',sellerSlug:'mom-care',img:'image/nursing.webp'},
+      {id:16,title:'Baby Warmer',price:'Rs. 4,500',mrp:'Rs. 5,200',discount:13,wishlisted:false,seller:'Cozy Baby',sellerSlug:'cozy-baby',img:'image/warmer.jpg'},
+    ],
+
+    news:[
+      {id:17,title:'Organic Lotion',price:'Rs. 1,850',wishlisted:false,seller:'Star Kids',sellerSlug:'star-kids',img:'image/ol.webp'},
+      {id:18,title:'Teething Toys',price:'Rs. 990',wishlisted:false,seller:'Baby Heaven',sellerSlug:'baby-heaven',img: 'image/teething1.jpg'},
+      {id:19,title:'Swaddle Blankets',price:'Rs. 3,200',wishlisted:false,seller:'Eco Baby',sellerSlug:'eco-baby',img:'https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?q=80&w=1200&auto=format&fit=crop'},
+      {id:20,title:'Activity Board',price:'Rs. 6,500',wishlisted:false,seller:'Smart Kids',sellerSlug:'smart-kids',img:'image/ab.jpg'},
+      {id:21,title:'Baby Gym',price:'Rs. 8,900',wishlisted:false,seller:'Play Time',sellerSlug:'play-time',img:'image/gym.jpg'},
+      {id:22,title:'Sound Machine',price:'Rs. 3,500',wishlisted:false,seller:'Sleep Well',sellerSlug:'sleep-well',img:'image/sm.jpg'},
+      {id:23,title:'Baby Shoes Set',price:'Rs. 1,950',wishlisted:false,seller:'First Steps',sellerSlug:'first-steps',img:'image/shoe.jpg'},
+      {id:24,title:'Pacifier Set',price:'Rs. 750',wishlisted:false,seller:'Baby Comfort',sellerSlug:'baby-comfort',img:'image/pacifier.jpg'},
+    ],
+
+    budgets:[
+      {label:'Under Rs. 1,000',href:'/budget/under-1000'},
+      {label:'Rs. 1,000-3,000',href:'/budget/1000-3000'},
+      {label:'Rs. 3,000-5,000',href:'/budget/3000-5000'},
+      {label:'Rs. 5,000-10,000',href:'/budget/5000-10000'},
+      {label:'Over Rs. 10,000',href:'/budget/over-10000'},
+    ],
+
+    tools:[
+      {title:'Baby Names',icon:'👶',copy:'Unique names',href:'/tools/names'},
+      {title:'Hospital List',icon:'🏥',copy:'AI packs for you',href:'/tools/hospital'},
+      {title:'Gift Finder',icon:'🎁',copy:'Perfect gifts',href:'/tools/gifts'},
+      {title:'Size Guide',icon:'📏',copy:'Right size',href:'/tools/sizes'},
+      {title:'Milestones',icon:'📊',copy:'Track moments',href:'/tools/milestones'},
+    ],
+
+    brands:[
+      {name:'Velona',logo:'image/velona.png'},
+      {name:'Farlin',logo:'image/hw.png'},
+      {name:'Pampers',logo:'image/atles.png'},
+      {name:'Huggies',logo:'image/DSI.png'},
+      {name:'Chicco',logo:'image/bc.png'},
+      {name:'Pigeon',logo:'image/kj.png'},
+    ],
+
+    topCats:[
+      {title:'Diapering',copy:'Peaceful nights 💤',href:'/diapering',img:'image/di.webp'},
+      {title:'Feeding',copy:'Every sip counts 🍼',href:'/feeding',img:'image/feeding.jpg'},
+      {title:'Toys',copy:'Playtime magic 🧩',href:'/toys',img:'image/toy.jpg'},
+      {title:'Baby Gear',copy:'Ready for adventures 🚗',href:'/gear',img:'image/gear.jpg'},
+    ],
+
+    init(){
+      const onScroll = () => { this.scrolled = window.scrollY > 20; this.showTrustBand = window.scrollY > 400; };
+      window.addEventListener('scroll', onScroll, {passive:true});
+
+      let total = 4*3600;
+      const t = setInterval(() => {
+        if(total<=0){ clearInterval(t); return; }
+        total--;
+        const h = String(Math.floor(total/3600)).padStart(2,'0');
+        const m = String(Math.floor((total%3600)/60)).padStart(2,'0');
+        const s = String(total%60).padStart(2,'0');
+        this.countdown = `${h}:${m}:${s}`;
+      }, 1000);
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }});
+      },{threshold:.12});
+      setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),120);
+
+      window.addEventListener('beforeunload',()=>{window.removeEventListener('scroll',onScroll);clearInterval(t);io.disconnect();});
+    },
+
+    acceptCookies() {
+      this.cookieConsent = true;
+      localStorage.setItem('cookieConsent', 'true');
+    },
+
+    toggleWishlist(id) {
+      const allProducts = [...this.deals, ...this.bests, ...this.news];
+      const product = allProducts.find(p => p.id === id);
+      if(product) product.wishlisted = !product.wishlisted;
+    },
+
+    openQuickView(product) {
+      this.quickViewProduct = product;
+    }
+  }
+}
+</script>
+
+<noscript>
+  <div style="position:fixed;top:0;left:0;right:0;background:#FEF3C7;padding:1rem;text-align:center;z-index:9999;">
+    <strong>⚠️ JavaScript Required</strong>
+  </div>
+</noscript>
+
+</body>
+</html>
