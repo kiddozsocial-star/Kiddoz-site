@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#042F66" />
+  <title>Baby Gear Sri Lanka — Strollers, Car Seats & Carriers | Kiddoz.lk</title>
+  <meta name="description" content="Shop 147+ verified baby gear products in Sri Lanka. Same‑day delivery in Colombo. Save up to 30% on strollers, carriers & car seats from trusted sellers with bank offers and easy returns." />
+  <link rel="canonical" href="https://www.kiddoz.lk/baby-gear" />
+  <link rel="icon" href="/images/Kiddoz_logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            elephant:'#042F66',
+            picton:'#2DAAE1',
+            violet:'#E71784',
+            line:'#E6E9EF',
+            ink:'#0B1220',
+            success:'#10B981',
+            warning:'#F59E0B',
+            danger:'#EF4444'
+          },
+          boxShadow:{
+            soft:'0 8px 28px rgba(4,47,102,.08)',
+            card:'0 2px 10px rgba(4,47,102,.10)',
+            elevated:'0 14px 44px rgba(4,47,102,.14)',
+          },
+          borderRadius:{ xl2:'14px' }
+        }
+      }
+    }
+  </script>
+  <style>
+    html{scroll-behavior:smooth}
+    .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .ratio-square{aspect-ratio:1/1}
+    .badge{font-size:11px;padding:2px 6px;border-radius:6px}
+    @media (max-width: 767px){
+      .badge{font-size:10px}
+    }
+  </style>
+</head>
+<body class="bg-[#F7F9FC] text-ink antialiased" x-data="{open:false, mfilter:false, msort:false}">
+  <!-- Announcement -->
+  <div class="bg-elephant text-white text-[13px]">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between flex-wrap gap-2">
+      <div class="flex gap-3">
+        <span>⚡ Save up to 30% Today</span>
+        <span>🚚 Same‑day Colombo (order before 3pm)</span>
+        <span>✓ 147 verified products</span>
+      </div>
+      <a href="/help" class="underline">Need help?</a>
+    </div>
+  </div>
+
+  <!-- Header (matches Homepage) -->
+  <header class="bg-white/95 backdrop-blur shadow-sm sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-2">
+        <img src="/images/Kiddoz_logo.png" alt="Kiddoz" class="h-8 w-auto md:h-9" />
+        <span class="hidden sm:block font-bold text-elephant">Kiddoz.lk</span>
+      </a>
+      <form action="/catalogsearch/result/" method="get" class="hidden md:flex max-w-lg w-full items-center gap-2">
+        <input id="q" name="q" type="search" placeholder="Search strollers, carriers, seats…" class="flex-1 h-9 rounded-lg border border-line px-3 text-[14px]"/>
+        <button class="h-9 px-3 rounded-lg bg-picton text-white text-[14px] font-semibold">Search</button>
+      </form>
+      <div class="flex items-center gap-2">
+        <a href="/customer/account/" class="p-2 text-[18px]" aria-label="My Account">👤</a>
+        <a href="/checkout/cart/" class="p-2 text-[18px]" aria-label="Shopping Cart">🛒</a>
+        <button class="md:hidden p-2 rounded-lg border border-line" @click="open=!open" aria-label="Menu">☰</button>
+      </div>
+    </div>
+    <div class="md:hidden border-t border-line" x-show="open" x-transition.origin.top>
+      <nav class="px-4 py-3 grid gap-2 bg-white" aria-label="Mobile">
+        <a href="/diapering" class="py-2">Diapering</a>
+        <a href="/feeding" class="py-2">Feeding</a>
+        <a href="/bath" class="py-2">Bath & Skin</a>
+        <a href="/gear" class="py-2">Gear</a>
+        <a href="/schooling" class="py-2">Schooling</a>
+        <a href="/toys" class="py-2">Toys</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Mobile sticky controls -->
+  <div class="md:hidden sticky top-[52px] z-30 bg-white/95 backdrop-blur border-y border-line">
+    <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-2">
+      <button class="flex-1 border border-line rounded-lg py-2 text-[14px]" @click="mfilter=true">🔎 Filters</button>
+      <button class="flex-1 border border-line rounded-lg py-2 text-[14px]" @click="msort=true">↕ Sort</button>
+    </div>
+  </div>
+
+  <!-- Mobile bottom sheets -->
+  <div class="md:hidden fixed inset-0 bg-black/30 z-50" x-show="mfilter" x-transition @click.self="mfilter=false" aria-modal="true" role="dialog">
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4 max-h-[80vh] overflow-auto">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-elephant font-semibold">Filters</h2>
+        <button class="text-picton underline" @click="mfilter=false">Done</button>
+      </div>
+      <details open class="border border-line rounded-lg mb-2">
+        <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Category</summary>
+        <div class="p-3 text-[14px] space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox"> Strollers (34)</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Car Seats (18)</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Baby Carriers (22)</label>
+        </div>
+      </details>
+      <details class="border border-line rounded-lg mb-2">
+        <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Price Range</summary>
+        <div class="p-3 text-[14px] space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox"> Under Rs. 10,000</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Rs. 10,000 – 30,000</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Above Rs. 30,000</label>
+        </div>
+      </details>
+      <details class="border border-line rounded-lg mb-2">
+        <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Seller</summary>
+        <div class="p-3 text-[14px] space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox"> Baby Gear LK ✓</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Velona Official ✓</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> STAR KiDS ✓</label>
+        </div>
+      </details>
+      <details class="border border-line rounded-lg">
+        <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Features</summary>
+        <div class="p-3 text-[14px] space-y-2">
+          <label class="flex items-center gap-2"><input type="checkbox"> Lightweight</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Foldable</label>
+          <label class="flex items-center gap-2"><input type="checkbox"> Travel‑Friendly</label>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <div class="md:hidden fixed inset-0 bg-black/30 z-50" x-show="msort" x-transition @click.self="msort=false" aria-modal="true" role="dialog">
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl p-4">
+      <div class="flex items-center justify-between mb-2">
+        <h2 class="text-elephant font-semibold">Sort</h2>
+        <button class="text-picton underline" @click="msort=false">Done</button>
+      </div>
+      <ul class="text-[15px]">
+        <li class="py-2 border-b border-line">Featured First</li>
+        <li class="py-2 border-b border-line">Price: Low‑High</li>
+        <li class="py-2 border-b border-line">Price: High‑Low</li>
+        <li class="py-2 border-b border-line">Biggest Savings</li>
+        <li class="py-2">Highest Rated</li>
+      </ul>
+    </div>
+  </div>
+
+  <main class="max-w-7xl mx-auto px-4 py-4 md:py-6">
+    <!-- Breadcrumb + H1 -->
+    <nav aria-label="Breadcrumb" class="text-[13px] text-slate-500 mb-1 hidden md:block">
+      <ol class="flex items-center gap-2">
+        <li><a href="/" class="underline">Home</a></li>
+        <li>/</li><li class="text-ink">Baby Gear</li>
+      </ol>
+    </nav>
+    <div class="mb-3">
+      <h1 class="text-2xl md:text-4xl font-extrabold text-elephant leading-tight">Baby Gear in Sri Lanka</h1>
+      <p class="text-[13px] md:text-[14px] text-slate-600">Strollers, carriers & car seats from 12 verified sellers • Same‑day delivery in Colombo</p>
+    </div>
+
+    <!-- Quick filters -->
+    <div class="flex items-center justify-start gap-2 flex-wrap mb-3 md:mb-4">
+      <button class="px-3 py-1.5 bg-white border border-line rounded-full text-[13px]">👶 Newborn</button>
+      <button class="px-3 py-1.5 bg-white border border-line rounded-full text-[13px]">🧒 Toddler</button>
+      <button class="px-3 py-1.5 bg-white border border-line rounded-full text-[13px]">✈️ Lightweight</button>
+      <button class="px-3 py-1.5 bg-white border border-line rounded-full text-[13px]">📦 Foldable</button>
+      <button class="px-3 py-1.5 bg-success text-white rounded-full text-[13px]">🚚 Same‑Day</button>
+    </div>
+
+    <!-- Layout: sidebar + grid -->
+    <div class="grid gap-6 lg:grid-cols-[280px,1fr]">
+      <!-- Sidebar (desktop) -->
+      <aside class="hidden lg:block">
+        <div class="bg-white border border-line rounded-xl2 shadow-card p-4 sticky top-24">
+          <div class="flex items-center justify-between pb-3 mb-3 border-b border-line">
+            <h2 class="text-elephant font-semibold">Filters</h2>
+            <button class="text-picton text-[13px] underline">Clear all</button>
+          </div>
+          <details open class="border border-line rounded-lg mb-2">
+            <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Category</summary>
+            <div class="p-3 text-[13px] text-slate-700 space-y-2">
+              <label class="flex items-center gap-2"><input type="checkbox"> Strollers <span class="text-slate-400">(34)</span></label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Car Seats <span class="text-slate-400">(18)</span></label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Baby Carriers <span class="text-slate-400">(22)</span></label>
+            </div>
+          </details>
+          <details class="border border-line rounded-lg mb-2">
+            <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Price Range</summary>
+            <div class="p-3 text-[13px] text-slate-700 space-y-2">
+              <label class="flex items-center gap-2"><input type="checkbox"> Under Rs. 10,000</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Rs. 10,000 – 30,000</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Above Rs. 30,000</label>
+            </div>
+          </details>
+          <details class="border border-line rounded-lg mb-2">
+            <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Seller</summary>
+            <div class="p-3 text-[13px] text-slate-700 space-y-2">
+              <label class="flex items-center gap-2"><input type="checkbox"> Baby Gear LK ✓</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Velona Official ✓</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> STAR KiDS ✓</label>
+            </div>
+          </details>
+          <details class="border border-line rounded-lg">
+            <summary class="px-3 py-2 font-semibold cursor-pointer text-[14px]">Features</summary>
+            <div class="p-3 text-[13px] text-slate-700 space-y-2">
+              <label class="flex items-center gap-2"><input type="checkbox"> Lightweight</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Foldable</label>
+              <label class="flex items-center gap-2"><input type="checkbox"> Travel‑Friendly</label>
+            </div>
+          </details>
+        </div>
+      </aside>
+
+      <!-- Products (2 on mobile, 4 on desktop) -->
+      <section>
+        <h2 class="sr-only">Product listings</h2>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg','/media/catalog/product/stroller-foldable/stroller-foldable-2.jpg','/media/catalog/product/stroller-foldable/stroller-foldable-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/lightweight-foldable-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-20%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg" alt="Lightweight Foldable Stroller" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Kiddoz</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/lightweight-foldable-stroller.html">Lightweight Foldable Stroller</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 22,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 28,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 5,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.7 (245)</div><div>Baby Gear LK • 4.9★</div>
+    </div>
+    <a href="/lightweight-foldable-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/travel-system/travel-system-1.jpg','/media/catalog/product/travel-system/travel-system-2.jpg','/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/travel-system-3-in-1.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-8%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">Only 3 left</span>
+    <img :src="images[i]" src="/media/catalog/product/travel-system/travel-system-1.jpg" alt="3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Velona</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/travel-system-3-in-1.html">3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 84,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 92,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 7,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-indigo-50 text-indigo-700">💳 Amex 0% 18 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.8 (112)</div><div>Velona Official • 5.0★</div>
+    </div>
+    <a href="/travel-system-3-in-1.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-2.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/ergonomic-carrier.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-17%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg" alt="Baby Carrier Ergonomic (Newborn to Toddler)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">STAR KiDS</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/ergonomic-carrier.html">Baby Carrier Ergonomic (Newborn to Toddler)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 7,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 9,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 1,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-emerald-50 text-emerald-700">💳 HSBC 5% Off</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.5 (68)</div><div>STAR KiDS • 4.8★</div>
+    </div>
+    <a href="/ergonomic-carrier.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/booster-seat/booster-seat-1.jpg','/media/catalog/product/booster-seat/booster-seat-2.jpg','/media/catalog/product/booster-seat/booster-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/portable-booster-seat.html" class="relative block">
+    <span class="badge absolute top-2 right-2 bg-success text-white font-bold">In Stock</span>
+    <img :src="images[i]" src="/media/catalog/product/booster-seat/booster-seat-1.jpg" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Baby Gear LK</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/portable-booster-seat.html">Portable Booster Seat (Travel & Home Use)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 6,450</div>
+      
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-cyan-50 text-cyan-700">💳 NDB 0% 6 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.3 (41)</div><div>Baby Gear LK • 4.9★</div>
+    </div>
+    <a href="/portable-booster-seat.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-2.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/all-terrain-jogger-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-15%</span>
+    <img :src="images[i]" src="/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg" alt="All‑Terrain Jogger Stroller (3‑Wheel)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Outdoor Kids</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/all-terrain-jogger-stroller.html">All‑Terrain Jogger Stroller (3‑Wheel)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 51,000</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 60,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 9,000</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-purple-50 text-purple-700">💳 NTB 0% 12 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.6 (54)</div><div>Outdoor Kids • 4.7★</div>
+    </div>
+    <a href="/all-terrain-jogger-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/convertible-seat/convertible-seat-1.jpg','/media/catalog/product/convertible-seat/convertible-seat-2.jpg','/media/catalog/product/convertible-seat/convertible-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/convertible-car-seat.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-12%</span>
+    <img :src="images[i]" src="/media/catalog/product/convertible-seat/convertible-seat-1.jpg" alt="Convertible Car Seat (Birth to 4 Years)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Safe Ride</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/convertible-car-seat.html">Convertible Car Seat (Birth to 4 Years)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 52,800</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 60,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 7,200</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-emerald-50 text-emerald-700">💳 HSBC 5% Off</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.7 (128)</div><div>Safe Ride • 4.8★</div>
+    </div>
+    <a href="/convertible-car-seat.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/premium-bassinet/premium-bassinet-1.jpg','/media/catalog/product/premium-bassinet/premium-bassinet-2.jpg','/media/catalog/product/premium-bassinet/premium-bassinet-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/premium-bassinet-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">PREMIUM</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">-10%</span>
+    <img :src="images[i]" src="/media/catalog/product/premium-bassinet/premium-bassinet-1.jpg" alt="Premium Bassinet Stroller with Reversible Seat" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Luxury Baby</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/premium-bassinet-stroller.html">Premium Bassinet Stroller with Reversible Seat</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 135,000</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 150,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 15,000</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-indigo-50 text-indigo-700">💳 Amex 0% 18 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.9 (76)</div><div>Luxury Baby • 5.0★</div>
+    </div>
+    <a href="/premium-bassinet-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/umbrella-stroller/umbrella-stroller-1.jpg','/media/catalog/product/umbrella-stroller/umbrella-stroller-2.jpg','/media/catalog/product/umbrella-stroller/umbrella-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/basic-umbrella-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">BUDGET PICK</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/umbrella-stroller/umbrella-stroller-1.jpg" alt="Basic Umbrella Stroller (Ultra‑Lightweight)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Budget Baby</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/basic-umbrella-stroller.html">Basic Umbrella Stroller (Ultra‑Lightweight)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 8,900</div>
+      
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-slate-100 text-slate-700">💳 Visa/Master 3%</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.4 (158)</div><div>Budget Baby • 4.6★</div>
+    </div>
+    <a href="/basic-umbrella-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg','/media/catalog/product/stroller-foldable/stroller-foldable-2.jpg','/media/catalog/product/stroller-foldable/stroller-foldable-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/lightweight-foldable-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-20%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg" alt="Lightweight Foldable Stroller" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Kiddoz</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/lightweight-foldable-stroller.html">Lightweight Foldable Stroller</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 22,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 28,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 5,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.7 (245)</div><div>Baby Gear LK • 4.9★</div>
+    </div>
+    <a href="/lightweight-foldable-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/travel-system/travel-system-1.jpg','/media/catalog/product/travel-system/travel-system-2.jpg','/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/travel-system-3-in-1.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-8%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">Only 3 left</span>
+    <img :src="images[i]" src="/media/catalog/product/travel-system/travel-system-1.jpg" alt="3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Velona</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/travel-system-3-in-1.html">3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 84,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 92,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 7,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-indigo-50 text-indigo-700">💳 Amex 0% 18 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.8 (112)</div><div>Velona Official • 5.0★</div>
+    </div>
+    <a href="/travel-system-3-in-1.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-2.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/ergonomic-carrier.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-17%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg" alt="Baby Carrier Ergonomic (Newborn to Toddler)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">STAR KiDS</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/ergonomic-carrier.html">Baby Carrier Ergonomic (Newborn to Toddler)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 7,900</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 9,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 1,600</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-emerald-50 text-emerald-700">💳 HSBC 5% Off</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.5 (68)</div><div>STAR KiDS • 4.8★</div>
+    </div>
+    <a href="/ergonomic-carrier.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/booster-seat/booster-seat-1.jpg','/media/catalog/product/booster-seat/booster-seat-2.jpg','/media/catalog/product/booster-seat/booster-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/portable-booster-seat.html" class="relative block">
+    <span class="badge absolute top-2 right-2 bg-success text-white font-bold">In Stock</span>
+    <img :src="images[i]" src="/media/catalog/product/booster-seat/booster-seat-1.jpg" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Baby Gear LK</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/portable-booster-seat.html">Portable Booster Seat (Travel & Home Use)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 6,450</div>
+      
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-cyan-50 text-cyan-700">💳 NDB 0% 6 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.3 (41)</div><div>Baby Gear LK • 4.9★</div>
+    </div>
+    <a href="/portable-booster-seat.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-2.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/all-terrain-jogger-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-15%</span>
+    <img :src="images[i]" src="/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg" alt="All‑Terrain Jogger Stroller (3‑Wheel)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Outdoor Kids</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/all-terrain-jogger-stroller.html">All‑Terrain Jogger Stroller (3‑Wheel)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 51,000</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 60,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 9,000</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-purple-50 text-purple-700">💳 NTB 0% 12 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.6 (54)</div><div>Outdoor Kids • 4.7★</div>
+    </div>
+    <a href="/all-terrain-jogger-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/convertible-seat/convertible-seat-1.jpg','/media/catalog/product/convertible-seat/convertible-seat-2.jpg','/media/catalog/product/convertible-seat/convertible-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/convertible-car-seat.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-12%</span>
+    <img :src="images[i]" src="/media/catalog/product/convertible-seat/convertible-seat-1.jpg" alt="Convertible Car Seat (Birth to 4 Years)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Safe Ride</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/convertible-car-seat.html">Convertible Car Seat (Birth to 4 Years)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 52,800</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 60,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 7,200</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-emerald-50 text-emerald-700">💳 HSBC 5% Off</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.7 (128)</div><div>Safe Ride • 4.8★</div>
+    </div>
+    <a href="/convertible-car-seat.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/premium-bassinet/premium-bassinet-1.jpg','/media/catalog/product/premium-bassinet/premium-bassinet-2.jpg','/media/catalog/product/premium-bassinet/premium-bassinet-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/premium-bassinet-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">PREMIUM</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">-10%</span>
+    <img :src="images[i]" src="/media/catalog/product/premium-bassinet/premium-bassinet-1.jpg" alt="Premium Bassinet Stroller with Reversible Seat" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Luxury Baby</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/premium-bassinet-stroller.html">Premium Bassinet Stroller with Reversible Seat</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 135,000</div>
+      <div class="text-slate-400 line-through text-[12px]">Rs. 150,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 15,000</div>
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-indigo-50 text-indigo-700">💳 Amex 0% 18 m</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.9 (76)</div><div>Luxury Baby • 5.0★</div>
+    </div>
+    <a href="/premium-bassinet-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+
+<article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
+         x-data="{ images: ['/media/catalog/product/umbrella-stroller/umbrella-stroller-1.jpg','/media/catalog/product/umbrella-stroller/umbrella-stroller-2.jpg','/media/catalog/product/umbrella-stroller/umbrella-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         @mouseenter="start()" @mouseleave="stop()">
+  <a href="/basic-umbrella-stroller.html" class="relative block">
+    <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">BUDGET PICK</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
+    <img :src="images[i]" src="/media/catalog/product/umbrella-stroller/umbrella-stroller-1.jpg" alt="Basic Umbrella Stroller (Ultra‑Lightweight)" class="w-full ratio-square object-cover" loading="lazy">
+  </a>
+  <div class="p-3 flex-1 flex flex-col">
+    <div class="text-[11px] uppercase tracking-wide text-slate-500">Budget Baby</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/basic-umbrella-stroller.html">Basic Umbrella Stroller (Ultra‑Lightweight)</a></h3>
+    <div class="mt-2 flex items-center gap-2">
+      <div class="text-success font-extrabold text-[18px]">Rs. 8,900</div>
+      
+    </div>
+    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-slate-100 text-slate-700">💳 Visa/Master 3%</span></div>
+    <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
+      <div>⭐ 4.4 (158)</div><div>Budget Baby • 4.6★</div>
+    </div>
+    <a href="/basic-umbrella-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+  </div>
+</article>
+
+        </div>
+
+        <!-- Pagination -->
+        <nav aria-label="Pagination" class="mt-5 md:mt-6 flex items-center justify-between">
+          <button class="h-11 px-4 rounded border border-line bg-white text-[14px]">← Previous</button>
+          <div class="flex items-center gap-1">
+            <a href="?p=1" class="h-11 w-11 grid place-content-center rounded border-2 border-picton text-picton font-semibold">1</a>
+            <a href="?p=2" class="h-11 w-11 grid place-content-center rounded border border-line">2</a>
+            <a href="?p=3" class="h-11 w-11 grid place-content-center rounded border border-line">3</a>
+            <span class="px-2 text-slate-400">…</span>
+            <a href="?p=8" class="h-11 w-11 grid place-content-center rounded border border-line">8</a>
+          </div>
+          <button class="h-11 px-4 rounded border border-line bg-white text-[14px]">Next →</button>
+        </nav>
+
+        <!-- Trust/USPs -->
+        <section class="mt-6 md:mt-8 grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+          <div class="bg-white border border-line rounded-xl2 p-3 md:p-4 text-center">
+            <div class="font-semibold text-elephant mb-0.5">Same‑Day Colombo</div>
+            <div class="text-[12px] md:text-[13px] text-slate-600">Order before 3pm</div>
+          </div>
+          <div class="bg-white border border-line rounded-xl2 p-3 md:p-4 text-center">
+            <div class="font-semibold text-elephant mb-0.5">Verified Sellers</div>
+            <div class="text-[12px] md:text-[13px] text-slate-600">12 trusted partners</div>
+          </div>
+          <div class="bg-white border border-line rounded-xl2 p-3 md:p-4 text-center">
+            <div class="font-semibold text-elephant mb-0.5">Bank Discounts</div>
+            <div class="text-[12px] md:text-[13px] text-slate-600">Up to 10% extra off</div>
+          </div>
+          <div class="bg-white border border-line rounded-xl2 p-3 md:p-4 text-center">
+            <div class="font-semibold text-elephant mb-0.5">Easy Returns</div>
+            <div class="text-[12px] md:text-[13px] text-slate-600">7–30 days</div>
+          </div>
+        </section>
+
+        <!-- Collapsible SEO content -->
+        <details class="mt-6 md:mt-8 bg-white border border-line rounded-xl2 overflow-hidden">
+          <summary class="px-4 md:px-5 py-3 md:py-4 cursor-pointer text-lg md:text-xl font-extrabold text-elephant flex items-center justify-between">
+            <span>Buy Baby Gear Online in Sri Lanka — Complete Guide</span>
+            <span class="text-lg">▼</span>
+          </summary>
+          <article class="px-4 md:px-5 pb-4 md:pb-5 text-[13px] md:text-[14px] text-slate-700 leading-7">
+            <p class="mb-3">Shopping for <strong>baby gear in Sri Lanka</strong> is simple on Kiddoz. Browse 147+ verified products from 12 trusted sellers including strollers, baby carriers, and car seats. Every item is quality‑checked with transparent pricing, genuine reviews, and flexible delivery options.</p>
+            <h3 class="text-elephant font-semibold text-[15px] md:text-[16px] mt-3 mb-2">Which baby gear should I buy first?</h3>
+            <ul class="list-disc pl-5 mb-3">
+              <li><strong>City parents:</strong> choose lightweight, foldable strollers</li>
+              <li><strong>Travel:</strong> ultra‑compact one‑hand fold</li>
+              <li><strong>Outdoor:</strong> all‑terrain wheels & suspension</li>
+              <li><strong>Newborns:</strong> lie‑flat recline + infant insert</li>
+            </ul>
+            <h3 class="text-elephant font-semibold text-[15px] md:text-[16px] mt-3 mb-2">Why buy from Kiddoz marketplace?</h3>
+            <ul class="list-disc pl-5 mb-3">
+              <li>Verified sellers only</li><li>Transparent pricing & returns</li>
+              <li>Same‑day delivery (Colombo, cut‑off 3pm)</li><li>Buyer protection</li>
+            </ul>
+            <h3 class="text-elephant font-semibold text-[15px] md:text-[16px] mt-3 mb-2">Bank card discounts & installments</h3>
+            <p>Save more with Commercial Bank, HNB, Sampath, NDB, BOC, Nations Trust, Cargills, HSBC & Amex. See product cards for eligibility.</p>
+          </article>
+        </details>
+
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-elephant text-white mt-8 md:mt-10">
+    <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-[13px] md:text-[14px]">
+      <div>
+        <div class="text-xl md:text-2xl font-extrabold mb-1">KIDDOZ</div>
+        <p class="text-white/80">Sri Lanka’s Trusted Baby Store</p>
+      </div>
+      <nav>
+        <h3 class="font-semibold mb-2">Quick Links</h3>
+        <ul class="space-y-1 text-white/85">
+          <li><a href="/about-us.html" class="underline">About Us</a></li>
+          <li><a href="/contact" class="underline">Contact</a></li>
+          <li><a href="/sales/guest/form/" class="underline">Track Order</a></li>
+          <li><a href="/faq.html" class="underline">FAQs</a></li>
+        </ul>
+      </nav>
+      <nav class="hidden md:block">
+        <h3 class="font-semibold mb-2">Policies</h3>
+        <ul class="space-y-1 text-white/85">
+          <li><a href="/shipping-policy.html" class="underline">Shipping</a></li>
+          <li><a href="/return-policy.html" class="underline">Returns</a></li>
+          <li><a href="/privacy-policy-cookie-restriction-mode" class="underline">Privacy</a></li>
+          <li><a href="/terms-and-conditions.html" class="underline">Terms</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3 class="font-semibold mb-2">Contact</h3>
+        <ul class="space-y-1 text-white/85">
+          <li>📞 +94 77 000 0000</li>
+          <li>📧 support@kiddoz.lk</li>
+          <li>📍 Colombo, Sri Lanka</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-white/20 py-3 text-center text-white/75 text-[13px] md:text-[14px]">© <span id="year"></span> Kiddoz.lk. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
