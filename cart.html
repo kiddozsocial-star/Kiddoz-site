@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#042F66" />
+  <title>Cart • Kiddoz.lk</title>
+  <meta name="description" content="Review your Kiddoz.lk cart. Vendor-aware shipping, bank offers, coupon support, and a checkout built for speed and clarity." />
+
+  <!-- Tailwind + Alpine -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            elephant: '#042F66',
+            picton: '#2DAAE1',
+            violet: '#E71784',
+            line: '#E6E9EF',
+            ink: '#0B1220',
+            success: '#10B981',
+            warning: '#F59E0B',
+            danger:  '#EF4444',
+          },
+          borderRadius: { xl2: '14px' },
+          boxShadow: {
+            soft: '0 8px 28px rgba(4,47,102,.08)',
+            card: '0 2px 10px rgba(4,47,102,.10)',
+            elevated: '0 14px 44px rgba(4,47,102,.14)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .no-scrollbar::-webkit-scrollbar{display:none}
+    .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+    .carousel-x{-webkit-overflow-scrolling:touch;touch-action:pan-x}
+    .focus-ring:focus-visible{outline:2px solid #2DAAE1; outline-offset:2px}
+  </style>
+</head>
+
+<body class="bg-[#F7F9FC] text-ink antialiased h-full"
+      x-data
+      x-init="window.cartStore.init()">
+
+<!-- ======================= HEADER ======================= -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2">
+      <img src="/images/Kiddoz_logo.png" alt="Kiddoz.lk" class="h-8 w-auto md:h-9" />
+      <span class="hidden sm:block font-bold text-elephant">Kiddoz.lk</span>
+    </a>
+
+    <form action="/catalogsearch/result/" method="get" class="hidden md:flex max-w-xl w-full items-center gap-2">
+      <input id="q" name="q" type="search" placeholder="Search baby essentials…"
+             class="flex-1 h-11 rounded-xl2 border border-line px-3 text-[14px] focus-ring" />
+      <button class="h-11 px-4 rounded-xl2 bg-picton text-white text-[14px] font-semibold">Search</button>
+    </form>
+
+    <div class="flex items-center gap-3">
+      <a href="/customer/account/" class="p-2 text-[18px] focus-ring" aria-label="Account">👤</a>
+
+      <!-- magento:minicart-trigger -->
+      <button class="relative p-2 text-[18px] focus-ring"
+              aria-label="Open mini cart"
+              @click="cartStore.openMiniCart()">
+        🛒
+        <span class="absolute -top-1 -right-1 min-w-[20px] h-5 px-1 rounded-full bg-violet text-white text-[11px] grid place-items-center"
+              x-text="cartStore.totalQty"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Trust band -->
+  <div class="border-t border-line bg-white">
+    <div class="max-w-7xl mx-auto px-4 py-2 grid grid-cols-2 sm:grid-cols-4 gap-2 text-[12px] text-elephant">
+      <div class="flex items-center gap-2">🚚 <span>Same-day Colombo</span></div>
+      <div class="flex items-center gap-2">✅ <span>Verified sellers</span></div>
+      <div class="flex items-center gap-2">💳 <span>Bank offers</span></div>
+      <div class="flex items-center gap-2">🔁 <span>Easy returns</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================= TOASTS ======================= -->
+<div class="fixed top-16 right-3 z-[60] space-y-2">
+  <template x-for="t in cartStore.toasts" :key="t.id">
+    <div class="rounded-xl2 shadow-elevated border"
+         :class="t.type==='error' ? 'bg-white border-danger' : 'bg-white border-success'">
+      <div class="px-3 py-2 text-[13px]">
+        <strong x-text="t.title"></strong>
+        <div x-text="t.message"></div>
+      </div>
+    </div>
+  </template>
+</div>
+
+<!-- ======================= MAIN ======================= -->
+<main class="max-w-7xl mx-auto px-4 py-5 md:py-7" x-data>
+  <!-- Free shipping meter -->
+  <section class="mb-4 md:mb-6">
+    <div class="bg-white border border-line rounded-xl2 shadow-card p-3">
+      <template x-if="cartStore.items.length">
+        <div>
+          <div class="flex items-center justify-between text-[13px] mb-2">
+            <div x-show="!cartStore.freeShipUnlocked">
+              <span>Rs. <strong x-text="cartStore.freeShipDelta.toLocaleString()"></strong> away from
+              <strong>Free Same-Day Delivery in Colombo</strong></span>
+            </div>
+            <div x-show="cartStore.freeShipUnlocked" class="text-success font-semibold">You’ve unlocked <strong>Free Same-Day Delivery</strong> 🎉</div>
+            <div class="text-slate-500">Threshold: Rs. <span x-text="cartStore.freeShipThreshold.toLocaleString()"></span></div>
+          </div>
+          <div class="h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div class="h-full transition-all"
+                 :class="cartStore.freeShipUnlocked ? 'bg-success' : 'bg-picton'"
+                 :style="`width:${cartStore.freeShipProgress}%;`"></div>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- Empty cart -->
+  <section x-show="!cartStore.items.length">
+    <div class="bg-white border border-line rounded-xl2 shadow-card p-6 text-center">
+      <div class="text-3xl mb-2">🛍️</div>
+      <h1 class="text-2xl font-extrabold text-elephant mb-1">Your cart is feeling lonely</h1>
+      <p class="text-slate-600 mb-4">Let’s find something perfect for baby.</p>
+      <div class="flex flex-wrap gap-2 justify-center">
+        <a href="/today-deals" class="px-4 h-10 rounded-xl2 bg-picton text-white font-semibold grid place-items-center">Today’s Deals</a>
+        <a href="/diapering" class="px-4 h-10 rounded-xl2 border border-line font-semibold grid place-items-center">Shop Diapers</a>
+        <a href="/recently-viewed" class="px-4 h-10 rounded-xl2 border border-line font-semibold grid place-items-center">Recently viewed</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cart layout -->
+  <section class="grid lg:grid-cols-[minmax(0,1fr),380px] gap-5" x-show="cartStore.items.length">
+    <!-- LEFT: items grouped by vendor -->
+    <div class="space-y-4">
+      <!-- magento:cart-items -->
+      <template x-for="vg in cartStore.vendorGroups" :key="vg.id">
+        <section class="bg-white border border-line rounded-xl2 shadow-card">
+          <!-- Vendor header -->
+          <div class="px-4 py-3 border-b border-line flex items-center gap-3">
+            <img :src="vg.logo" alt="" class="w-9 h-9 rounded-xl2 object-cover" loading="lazy">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <a :href="vg.url" class="font-semibold text-elephant truncate" x-text="vg.name"></a>
+                <span class="text-[12px] px-2 h-5 rounded-full bg-success text-white grid place-items-center">★ <span x-text="vg.rating"></span></span>
+              </div>
+              <div class="text-[12px] text-slate-600" x-text="vg.sla"></div>
+            </div>
+            <a :href="vg.url" class="ml-auto text-[13px] underline">Visit Store</a>
+          </div>
+
+          <!-- Items -->
+          <div class="divide-y divide-line">
+            <template x-for="it in cartStore.itemsByVendor(vg.id)" :key="it.id">
+              <article class="p-3 md:p-4 grid grid-cols-[96px,1fr] gap-3 md:gap-4">
+                <a :href="it.url" class="block rounded-xl2 overflow-hidden bg-slate-100 aspect-[1/1]">
+                  <img :src="it.image" :alt="it.name" class="w-full h-full object-cover" loading="lazy">
+                </a>
+                <div class="min-w-0 flex flex-col gap-1">
+                  <div class="flex items-start gap-2">
+                    <h3 class="font-semibold text-elephant clamp-2 leading-snug">
+                      <a :href="it.url" x-text="it.name"></a>
+                    </h3>
+                    <span class="ml-auto text-[11px] px-2 py-0.5 rounded-full"
+                          :class="it.availability==='low' ? 'bg-warning/10 text-warning' : (it.availability==='oos' ? 'bg-danger/10 text-danger' : 'bg-success/10 text-success')"
+                          x-text="it.availability==='low' ? 'Only '+it.maxQty+' left' : (it.availability==='oos' ? 'Out of stock' : 'In stock')"></span>
+                  </div>
+
+                  <div class="text-[13px] text-slate-600">
+                    <template x-if="it.attributes.color"><span>Color: <span class="font-medium text-ink" x-text="it.attributes.color"></span></span></template>
+                    <template x-if="it.attributes.size"><span class="ml-3">Size: <span class="font-medium text-ink" x-text="it.attributes.size"></span></span></template>
+                    <span class="ml-3 text-slate-500">Seller: <span class="font-medium" x-text="vg.name"></span></span>
+                  </div>
+
+                  <!-- Price row -->
+                  <div class="flex items-end gap-3">
+                    <div class="text-success font-extrabold text-[18px]">Rs. <span x-text="it.price.sale.toLocaleString()"></span></div>
+                    <div class="text-slate-400 line-through text-[13px]" x-show="it.price.mrp>it.price.sale">Rs. <span x-text="it.price.mrp.toLocaleString()"></span></div>
+                    <div class="text-[11px] px-2 py-0.5 rounded-full bg-picton/10 text-picton font-semibold" x-show="it.price.mrp>it.price.sale">
+                      You save Rs. <span x-text="(it.price.mrp-it.price.sale).toLocaleString()"></span>
+                    </div>
+                    <div class="ml-auto text-[13px] text-elephant font-semibold">Subtotal: Rs. <span x-text="(it.price.sale*it.qty).toLocaleString()"></span></div>
+                  </div>
+
+                  <!-- BNPL chips -->
+                  <div class="flex flex-wrap gap-2 text-[11px] mt-1">
+                    <span class="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">Amex 0% 12m</span>
+                    <span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-700">HNB 0% 3m</span>
+                    <span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700">Sampath 10% CB</span>
+                  </div>
+
+                  <!-- Delivery ETA -->
+                  <div class="text-[12px] text-slate-600 mt-1">Est. delivery: <strong x-text="it.shippingEta"></strong> to Colombo 06</div>
+
+                  <!-- Controls -->
+                  <div class="mt-2 flex flex-wrap items-center gap-2">
+                    <div class="inline-flex items-center border border-line rounded-xl2 overflow-hidden">
+                      <button class="px-3 h-9 focus-ring" @click="cartStore.changeQty(it, it.qty-1)" aria-label="Decrease quantity">−</button>
+                      <input type="number" min="1" :max="it.maxQty" x-model.number="it.qty"
+                             @change="cartStore.ensureQtyBounds(it)"
+                             class="w-14 h-9 text-center focus-ring" aria-label="Quantity">
+                      <button class="px-3 h-9 focus-ring" @click="cartStore.changeQty(it, it.qty+1)" aria-label="Increase quantity">+</button>
+                    </div>
+                    <button class="h-9 px-3 rounded-xl2 border border-line text-[13px] focus-ring" @click="cartStore.saveForLater(it)">Save for later</button>
+                    <button class="h-9 px-3 rounded-xl2 border border-line text-[13px] focus-ring" @click="cartStore.moveToWishlist(it)">Wishlist</button>
+                    <button class="h-9 px-3 rounded-xl2 bg-white border border-danger text-danger text-[13px] focus-ring" @click="cartStore.removeItem(it)">Remove</button>
+                  </div>
+                </div>
+              </article>
+            </template>
+          </div>
+
+          <!-- Vendor shipping (accordion) -->
+          <!-- magento:shipping-methods -->
+          <details class="px-4 py-3 border-t border-line">
+            <summary class="cursor-pointer font-semibold text-elephant select-none">Shipping for this seller</summary>
+            <div class="mt-3 grid gap-2">
+              <template x-for="m in vg.shippingMethods" :key="m.code">
+                <label class="flex items-center gap-3 border border-line rounded-xl2 p-2">
+                  <input type="radio" class="accent-picton"
+                         :name="'ship-'+vg.id"
+                         :value="m.code"
+                         x-model="vg.selectedShipping"
+                         @change="cartStore.updateShipping(vg)">
+                  <span class="flex-1 text-[14px]" x-text="m.label"></span>
+                  <span class="text-[13px] font-semibold" :class="m.cost===0 ? 'text-success' : 'text-ink'">
+                    <span x-text="m.cost===0 ? 'FREE' : 'Rs. '+m.cost.toLocaleString()"></span>
+                  </span>
+                </label>
+              </template>
+              <div class="text-[12px] text-slate-600">Pickup shown only if available.</div>
+            </div>
+          </details>
+
+          <!-- Vendor note -->
+          <details class="px-4 py-3 border-t border-line">
+            <summary class="cursor-pointer font-semibold text-elephant select-none">Gift message or delivery notes</summary>
+            <div class="mt-3">
+              <textarea class="w-full border border-line rounded-xl2 px-3 py-2 text-[14px] focus-ring"
+                        rows="3" maxlength="200"
+                        x-model="vg.note"
+                        aria-label="Note to seller"></textarea>
+              <div class="text-[12px] text-slate-500 text-right"><span x-text="200-(vg.note?.length||0)"></span> characters left</div>
+            </div>
+          </details>
+
+          <!-- Vendor upsell strip -->
+          <!-- magento:recommendations -->
+          <div class="px-4 py-3 border-t border-line">
+            <div class="text-[14px] font-semibold mb-2">Complete your set</div>
+            <div class="carousel-x no-scrollbar overflow-x-auto snap-x snap-mandatory flex gap-3 -mx-1 px-1">
+              <template x-for="p in vg.upsell" :key="p.id">
+                <div class="snap-start flex-none w-[70%] sm:w-[44%] md:w-[30%] lg:w-[22%] bg-white border border-line rounded-xl2 shadow-card overflow-hidden">
+                  <a :href="p.url" class="block aspect-[1/1] bg-slate-100">
+                    <img :src="p.image" :alt="p.name" class="w-full h-full object-cover" loading="lazy">
+                  </a>
+                  <div class="p-2">
+                    <div class="text-[12px] clamp-2" x-text="p.name"></div>
+                    <div class="mt-1 text-success font-bold text-[14px]">Rs. <span x-text="p.price.toLocaleString()"></span></div>
+                    <button class="mt-2 w-full h-8 rounded-xl2 border-2 border-picton text-picton text-[12px] font-semibold"
+                            @click="cartStore.quickAdd(p)">Add</button>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </section>
+      </template>
+    </div>
+
+    <!-- RIGHT: order summary -->
+    <aside class="lg:sticky lg:top-24 space-y-4">
+      <!-- magento:totals -->
+      <section class="bg-white border border-line rounded-xl2 shadow-card p-4">
+        <h2 class="text-elephant font-extrabold text-lg mb-2">Order Summary</h2>
+
+        <!-- Coupon -->
+        <!-- magento:coupon -->
+        <div class="mb-3">
+          <label for="coupon" class="text-[13px] text-slate-700">Coupon</label>
+          <div class="mt-1 flex gap-2">
+            <input id="coupon" type="text" class="flex-1 h-10 rounded-xl2 border border-line px-3 text-[14px] focus-ring"
+                   placeholder="Enter code" x-model="cartStore.couponCode"
+                   @keydown.enter.prevent="cartStore.applyCoupon()">
+            <button class="h-10 px-4 rounded-xl2 bg-picton text-white font-semibold"
+                    @click="cartStore.applyCoupon()">Apply</button>
+          </div>
+          <p class="text-[12px] text-slate-500 mt-1">Tip: Try <strong>KIDDOZ5</strong> for 5% off.</p>
+        </div>
+
+        <dl class="text-[14px] space-y-2">
+          <div class="flex justify-between"><dt>Items total</dt><dd>Rs. <span x-text="cartStore.itemsTotal.toLocaleString()"></span></dd></div>
+          <div class="flex justify-between" x-show="cartStore.discounts>0">
+            <dt class="text-success">Discounts</dt>
+            <dd class="text-success">− Rs. <span x-text="cartStore.discounts.toLocaleString()"></span></dd>
+          </div>
+          <div class="flex justify-between"><dt>Shipping</dt><dd x-text="cartStore.shippingTotal===0 ? 'FREE' : 'Rs. '+cartStore.shippingTotal.toLocaleString()"></dd></div>
+          <div class="flex justify-between"><dt>Tax</dt><dd>Rs. <span x-text="cartStore.tax.toLocaleString()"></span></dd></div>
+          <div class="border-t border-line pt-2 flex justify-between font-extrabold text-elephant text-[18px]">
+            <dt>Grand Total</dt><dd>Rs. <span x-text="cartStore.grandTotal.toLocaleString()"></span></dd>
+          </div>
+        </dl>
+
+        <!-- BNPL hint -->
+        <div class="mt-2 text-[13px] text-slate-700">
+          or from <span class="font-semibold text-ink">Rs. <span x-text="Math.round(cartStore.grandTotal/6).toLocaleString()"></span>/mo</span> × 6 at 0%
+        </div>
+
+        <!-- CTAs -->
+        <div class="mt-3 grid gap-2">
+          <a href="/checkout" class="h-11 rounded-xl2 bg-picton text-white font-semibold grid place-items-center">Proceed to Checkout</a>
+          <a href="/baby-gear" class="h-11 rounded-xl2 border border-line font-semibold grid place-items-center">Continue Shopping</a>
+          <div class="text-[12px] text-slate-600 text-center">🔒 256-bit Secure Checkout • Visa • Master • Amex</div>
+        </div>
+
+        <!-- FAQ mini-accordion -->
+        <div class="mt-3">
+          <details class="border border-line rounded-xl2 mb-2">
+            <summary class="px-3 py-2 cursor-pointer font-semibold">Returns</summary>
+            <div class="px-3 pb-3 text-[13px] text-slate-700">30-day returns on unused items in original packaging.</div>
+          </details>
+          <details class="border border-line rounded-xl2 mb-2">
+            <summary class="px-3 py-2 cursor-pointer font-semibold">Warranty</summary>
+            <div class="px-3 pb-3 text-[13px] text-slate-700">Official Sri Lanka warranty by the seller.</div>
+          </details>
+          <details class="border border-line rounded-xl2">
+            <summary class="px-3 py-2 cursor-pointer font-semibold">Payment Plans</summary>
+            <div class="px-3 pb-3 text-[13px] text-slate-700">Amex 0% up to 18 months; HNB 0% 3 months; Sampath 10% cashback.</div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Recently viewed (fallback) -->
+      <section class="bg-white border border-line rounded-xl2 shadow-card p-4">
+        <div class="text-[14px] font-semibold mb-2">Recently viewed</div>
+        <div class="carousel-x no-scrollbar overflow-x-auto flex gap-3 -mx-1 px-1 snap-x snap-mandatory">
+          <a href="/product/1" class="snap-start flex-none w-[42%] sm:w-[30%] lg:w-[28%] rounded-xl2 border border-line overflow-hidden">
+            <img src="kiddoz-plp/public/media/cart/item-1.jpg" alt="City Stroller Lite" class="w-full aspect-[1/1] object-cover" loading="lazy">
+          </a>
+          <a href="/product/2" class="snap-start flex-none w-[42%] sm:w-[30%] lg:w-[28%] rounded-xl2 border border-line overflow-hidden">
+            <img src="kiddoz-plp/public/media/cart/item-2.jpg" alt="Ergonomic Carrier" class="w-full aspect-[1/1] object-cover" loading="lazy">
+          </a>
+          <a href="/product/3" class="snap-start flex-none w-[42%] sm:w-[30%] lg:w-[28%] rounded-xl2 border border-line overflow-hidden">
+            <img src="kiddoz-plp/public/media/cart/item-3.jpg" alt="Travel Cot" class="w-full aspect-[1/1] object-cover" loading="lazy">
+          </a>
+        </div>
+      </section>
+    </aside>
+  </section>
+</main>
+
+<!-- ======================= MOBILE STICKY SUMMARY ======================= -->
+<div class="lg:hidden fixed bottom-0 inset-x-0 bg-white/95 backdrop-blur border-t border-line z-40" x-show="cartStore.items.length">
+  <div class="max-w-7xl mx-auto px-4 py-2 flex items-center gap-3">
+    <div class="text-[13px]">
+      <div class="text-slate-600 leading-tight">Grand Total</div>
+      <div class="text-[18px] font-extrabold text-elephant">Rs. <span x-text="cartStore.grandTotal.toLocaleString()"></span></div>
+    </div>
+    <button class="ml-auto h-11 px-5 rounded-xl2 bg-picton text-white font-semibold" @click="location.href='/checkout'">
+      Proceed to Checkout
+    </button>
+  </div>
+</div>
+
+<!-- ======================= MINI CART (OFF-CANVAS) ======================= -->
+<!-- magento:minicart-contents -->
+<div aria-hidden="true"
+     x-show="cartStore.miniOpen"
+     x-transition.opacity
+     class="fixed inset-0 z-[70]">
+  <!-- overlay -->
+  <div class="absolute inset-0 bg-black/40" @click="cartStore.closeMiniCart()" aria-hidden="true"></div>
+
+  <!-- drawer -->
+  <aside class="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-elevated grid grid-rows-[auto,1fr,auto]"
+         role="dialog" aria-modal="true" aria-label="Mini cart"
+         x-show="cartStore.miniOpen"
+         x-transition.duration.200ms
+         @keydown.escape.window="cartStore.closeMiniCart()"
+         x-init="$watch('cartStore.miniOpen', v => v && $nextTick(()=> $refs.minicartClose?.focus()))">
+
+    <header class="px-4 py-3 border-b border-line flex items-center gap-2">
+      <h2 class="font-extrabold text-elephant text-lg">Your Bag (<span x-text="cartStore.totalQty"></span>)</h2>
+      <button class="ml-auto h-9 px-3 rounded-xl2 border border-line text-[13px] focus-ring"
+              @click="cartStore.closeMiniCart()" aria-label="Close mini cart" x-ref="minicartClose">Close</button>
+    </header>
+
+    <!-- free-ship compact -->
+    <div class="px-4 py-2 border-b border-line">
+      <div class="h-1.5 rounded-full bg-slate-100 overflow-hidden mb-1">
+        <div class="h-full transition-all"
+             :class="cartStore.freeShipUnlocked ? 'bg-success' : 'bg-picton'"
+             :style="`width:${cartStore.freeShipProgress}%;`"></div>
+      </div>
+      <div class="text-[12px]" x-show="!cartStore.freeShipUnlocked">
+        Rs. <strong x-text="cartStore.freeShipDelta.toLocaleString()"></strong> away from free same-day delivery.
+      </div>
+      <div class="text-[12px] text-success font-semibold" x-show="cartStore.freeShipUnlocked">Free delivery unlocked 🎉</div>
+    </div>
+
+    <!-- items -->
+    <div class="overflow-y-auto p-3 space-y-3">
+      <template x-for="it in cartStore.items" :key="it.id">
+        <div class="grid grid-cols-[72px,1fr] gap-3 border border-line rounded-xl2 p-2">
+          <a :href="it.url" class="rounded-xl2 overflow-hidden bg-slate-100 aspect-[1/1]">
+            <img :src="it.image" :alt="it.name" class="w-full h-full object-cover" loading="lazy">
+          </a>
+          <div class="min-w-0">
+            <div class="font-semibold text-[14px] clamp-2"><a :href="it.url" x-text="it.name"></a></div>
+            <div class="text-[12px] text-slate-600">
+              <template x-if="it.attributes.color"><span>Color: <span class="font-medium" x-text="it.attributes.color"></span></span></template>
+              <template x-if="it.attributes.size"><span class="ml-2">Size: <span class="font-medium" x-text="it.attributes.size"></span></span></template>
+            </div>
+            <div class="mt-1 flex items-center gap-2">
+              <div class="text-success font-bold">Rs. <span x-text="it.price.sale.toLocaleString()"></span></div>
+              <div class="text-[12px] text-slate-400 line-through" x-show="it.price.mrp>it.price.sale">Rs. <span x-text="it.price.mrp.toLocaleString()"></span></div>
+            </div>
+            <div class="mt-2 flex items-center gap-2">
+              <div class="inline-flex items-center border border-line rounded-xl2 overflow-hidden">
+                <button class="px-2 h-8 focus-ring" @click="cartStore.changeQty(it, it.qty-1)" aria-label="Decrease quantity">−</button>
+                <input type="number" min="1" :max="it.maxQty" x-model.number="it.qty"
+                       @change="cartStore.ensureQtyBounds(it)"
+                       class="w-12 h-8 text-center focus-ring" aria-label="Quantity">
+                <button class="px-2 h-8 focus-ring" @click="cartStore.changeQty(it, it.qty+1)" aria-label="Increase quantity">+</button>
+              </div>
+              <button class="ml-auto text-danger text-[12px]" @click="cartStore.removeItem(it)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </template>
+
+      <!-- promo add-ons -->
+      <div>
+        <div class="text-[13px] font-semibold mb-2">Add-ons</div>
+        <div class="carousel-x no-scrollbar overflow-x-auto flex gap-2 -mx-1 px-1 snap-x snap-mandatory">
+          <template x-for="p in cartStore.addons" :key="p.id">
+            <div class="snap-start flex-none w-[60%] sm:w-[40%] border border-line rounded-xl2 overflow-hidden">
+              <img :src="p.image" :alt="p.name" class="w-full aspect-[1/1] object-cover" loading="lazy">
+              <div class="p-2">
+                <div class="text-[12px] clamp-2" x-text="p.name"></div>
+                <div class="text-[13px] text-success font-semibold">Rs. <span x-text="p.price.toLocaleString()"></span></div>
+                <button class="mt-1 w-full h-8 rounded-xl2 border-2 border-picton text-picton text-[12px] font-semibold"
+                        @click="cartStore.quickAdd(p)">Add</button>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="border-t border-line p-3 grid gap-2">
+      <div class="flex items-center justify-between">
+        <div class="text-[13px]">Subtotal</div>
+        <div class="font-extrabold text-elephant">Rs. <span x-text="cartStore.itemsTotal.toLocaleString()"></span></div>
+      </div>
+
+      <div class="flex gap-2">
+        <input type="text" placeholder="Coupon"
+               class="flex-1 h-10 rounded-xl2 border border-line px-3 text-[14px] focus-ring"
+               x-model="cartStore.couponCode"
+               @keydown.enter.prevent="cartStore.applyCoupon()">
+        <button class="h-10 px-3 rounded-xl2 border border-line text-[13px] font-semibold" @click="cartStore.applyCoupon()">Apply</button>
+      </div>
+
+      <div class="grid gap-2 mt-1">
+        <a href="/checkout" class="h-11 rounded-xl2 bg-picton text-white font-semibold grid place-items-center">Checkout</a>
+        <a href="/cart" class="h-11 rounded-xl2 border border-line font-semibold grid place-items-center">View Cart</a>
+      </div>
+    </footer>
+  </aside>
+</div>
+
+<!-- ======================= ALPINE STORE ======================= -->
+<script>
+  window.cartStore = {
+    // --- state ---
+    items: [
+      {
+        id:'i-1', name:'City Stroller Lite', url:'/product/city-stroller-lite',
+        image:'kiddoz-plp/public/media/cart/item-1.jpg',
+        vendorId:'v-1', vendorName:'Baby Gear LK', vendorUrl:'/seller/baby-gear-lk', vendorRating:4.9,
+        attributes:{ color:'Black', size:'Standard' },
+        price:{ mrp:21900, sale:19900, currency:'LKR' },
+        qty:1, maxQty:5, availability:'in_stock',
+        promos:[{type:'percent', value:9},{type:'bank', code:'HNB_0_3'}],
+        shippingEta:'Tomorrow',
+        bnpl:{ monthly:3317, months:6, provider:'HNB' }
+      },
+      {
+        id:'i-2', name:'Ergonomic Carrier', url:'/product/ergonomic-carrier',
+        image:'kiddoz-plp/public/media/cart/item-2.jpg',
+        vendorId:'v-1', vendorName:'Baby Gear LK', vendorUrl:'/seller/baby-gear-lk', vendorRating:4.9,
+        attributes:{ color:'Forest' },
+        price:{ mrp:9500, sale:7900, currency:'LKR' },
+        qty:1, maxQty:3, availability:'low',
+        promos:[{type:'percent', value:17}],
+        shippingEta:'Tomorrow',
+        bnpl:{ monthly:1317, months:6, provider:'HNB' }
+      },
+      {
+        id:'i-3', name:'Foldable Travel Cot', url:'/product/foldable-travel-cot',
+        image:'kiddoz-plp/public/media/cart/item-3.jpg',
+        vendorId:'v-2', vendorName:'Tiny Tots', vendorUrl:'/seller/tiny-tots', vendorRating:4.7,
+        attributes:{ color:'Grey' },
+        price:{ mrp:26500, sale:24500, currency:'LKR' },
+        qty:1, maxQty:2, availability:'in_stock',
+        promos:[{type:'percent', value:8}],
+        shippingEta:'2–3 days',
+        bnpl:{ monthly:4084, months:6, provider:'HNB' }
+      }
+    ],
+
+    vendors: [
+      {
+        id:'v-1', name:'Baby Gear LK', logo:'kiddoz-plp/public/media/seller/baby-gear-lk-logo.jpg',
+        url:'/seller/baby-gear-lk', rating:4.9, sla:'Ships in 24–48h',
+        shippingMethods:[
+          {code:'standard', label:'Standard (2–3 days)', cost:0},
+          {code:'express',  label:'Express (next day)', cost:350},
+          {code:'pickup',   label:'Store Pickup', cost:0, available:false}
+        ],
+        selectedShipping:'standard',
+        note:'',
+        upsell:[
+          {id:'u1', name:'Stroller Organizer', price:3450, image:'kiddoz-plp/public/media/cart/add-1.jpg', url:'/product/stroller-organizer'},
+          {id:'u2', name:'Rain Cover', price:2950, image:'kiddoz-plp/public/media/cart/add-2.jpg', url:'/product/rain-cover'}
+        ]
+      },
+      {
+        id:'v-2', name:'Tiny Tots', logo:'/media/seller/tiny-tots.jpg',
+        url:'/seller/tiny-tots', rating:4.7, sla:'Ships in 24–48h',
+        shippingMethods:[
+          {code:'standard', label:'Standard (2–3 days)', cost:0},
+          {code:'express',  label:'Express (next day)', cost:450}
+        ],
+        selectedShipping:'express',
+        note:'',
+        upsell:[
+          {id:'u3', name:'Fitted Sheet', price:1650, image:'kiddoz-plp/public/media/cart/add-3.jpg', url:'/product/fitted-sheet'},
+          {id:'u4', name:'Portable Fan', price:2350, image:'kiddoz-plp/public/media/cart/add-4.jpg', url:'/product/clip-on-fan'}
+        ]
+      }
+    ],
+
+    addons:[
+      {id:'a1', name:'Seat Liner (Breathable)', price:3450, image:'kiddoz-plp/public/media/cart/add-5.jpg'},
+      {id:'a2', name:'Cup Holder', price:1750, image:'kiddoz-plp/public/media/cart/add-6.jpg'}
+    ],
+
+    couponCode:'', appliedCoupon:null, miniOpen:false, toasts:[],
+    freeShipThreshold: 30000,
+
+    // --- getters (computed via ES5 properties) ---
+    get vendorGroups(){ return this.vendors; },
+    itemsByVendor(vId){ return this.items.filter(i=>i.vendorId===vId); },
+
+    get itemsTotal(){ return this.items.reduce((a,i)=>a + i.price.sale * i.qty, 0); },
+    get shippingTotal(){
+      return this.vendors.reduce((sum,v)=>{
+        const m = v.shippingMethods.find(x=>x.code===v.selectedShipping);
+        return sum + (m ? m.cost : 0);
+      }, 0);
+    },
+    get discounts(){
+      // base discount from coupons (simple demo: 5% off code KIDDOZ5)
+      let d = this.appliedCoupon?.code==='KIDDOZ5' ? Math.round(this.itemsTotal*0.05) : 0;
+      return d;
+    },
+    get tax(){ return Math.round((this.itemsTotal - this.discounts) * 0.02); }, // 2% sample
+    get grandTotal(){ return Math.max(0, this.itemsTotal - this.discounts) + this.shippingTotal + this.tax; },
+    get totalQty(){ return this.items.reduce((a,i)=>a+i.qty,0); },
+
+    get freeShipUnlocked(){ return this.itemsTotal >= this.freeShipThreshold; },
+    get freeShipDelta(){ return Math.max(0, this.freeShipThreshold - this.itemsTotal); },
+    get freeShipProgress(){ return Math.min(100, Math.round(this.itemsTotal/this.freeShipThreshold*100)); },
+
+    // --- actions ---
+    init(){ /* placeholder for Magento hydration */ },
+
+    openMiniCart(){ this.miniOpen = true; },
+    closeMiniCart(){ this.miniOpen = false; },
+
+    ensureQtyBounds(it){
+      if (it.qty < 1) it.qty = 1;
+      if (it.qty > it.maxQty) {
+        it.qty = it.maxQty;
+        this.toast('Stock updated', `Max available is ${it.maxQty}.`, 'error');
+      }
+    },
+    changeQty(it, newQty){
+      it.qty = Number(newQty);
+      this.ensureQtyBounds(it);
+    },
+    removeItem(it){
+      this.items = this.items.filter(x=>x.id!==it.id);
+      this.toast('Removed', `${it.name} removed from cart.`);
+    },
+    saveForLater(it){
+      this.toast('Saved', `${it.name} moved to Save for later.`);
+      this.items = this.items.filter(x=>x.id!==it.id);
+    },
+    moveToWishlist(it){
+      this.toast('Wishlisted', `${it.name} moved to Wishlist.`);
+      this.items = this.items.filter(x=>x.id!==it.id);
+    },
+    updateShipping(vendor){
+      const m = vendor.shippingMethods.find(x=>x.code===vendor.selectedShipping);
+      this.toast('Shipping updated', `${vendor.name}: ${m.label} ${m.cost?('— Rs. '+m.cost.toLocaleString()):'(FREE)'} applied.`);
+    },
+    applyCoupon(){
+      const c = (this.couponCode||'').trim().toUpperCase();
+      if(!c){ return; }
+      if(c==='KIDDOZ5'){
+        this.appliedCoupon = { code:c, value:5, type:'percent' };
+        this.toast('Nice! Coupon applied.', `Coupon ${c} gives 5% off.`);
+      }else{
+        this.appliedCoupon = null;
+        this.toast('Coupon not applied', `That code doesn’t apply here — try KIDDOZ5 for 5% off.`, 'error');
+      }
+      this.couponCode='';
+    },
+    quickAdd(p){
+      // add as a simple line from first vendor
+      const v = this.vendors[0];
+      const newItem = {
+        id:'ad-'+Date.now(), name:p.name, url:'#', image:p.image,
+        vendorId:v.id, vendorName:v.name, vendorUrl:v.url, vendorRating:v.rating,
+        attributes:{}, price:{mrp:p.price, sale:p.price, currency:'LKR'},
+        qty:1, maxQty:5, availability:'in_stock', promos:[], shippingEta:'2–3 days'
+      };
+      this.items.push(newItem);
+      this.toast('Added', `${p.name} added to cart.`);
+    },
+    toast(title, message, type='success'){
+      const id = Date.now()+Math.random();
+      this.toasts.push({id,title,message,type});
+      setTimeout(()=> this.toasts = this.toasts.filter(t=>t.id!==id), 3500);
+    }
+  };
+</script>
+
+<!-- ======================= FOOTER (simple) ======================= -->
+<footer class="mt-8 md:mt-12 bg-elephant text-white">
+  <div class="max-w-7xl mx-auto px-4 py-6 md:py-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 text-[13px]">
+    <div>
+      <div class="text-2xl font-extrabold mb-1">KIDDOZ</div>
+      <p class="text-white/80">Sri Lanka’s Trusted Baby Store</p>
+    </div>
+    <nav>
+      <h3 class="font-semibold mb-2">Quick Links</h3>
+      <ul class="space-y-1 text-white/85">
+        <li><a href="/about-us.html" class="underline">About Us</a></li>
+        <li><a href="/contact" class="underline">Contact</a></li>
+        <li><a href="/sales/guest/form/" class="underline">Track Order</a></li>
+        <li><a href="/faq.html" class="underline">FAQs</a></li>
+      </ul>
+    </nav>
+    <nav class="hidden md:block">
+      <h3 class="font-semibold mb-2">Policies</h3>
+      <ul class="space-y-1 text-white/85">
+        <li><a href="/shipping-policy.html" class="underline">Shipping</a></li>
+        <li><a href="/return-policy.html" class="underline">Returns</a></li>
+        <li><a href="/privacy-policy-cookie-restriction-mode" class="underline">Privacy</a></li>
+        <li><a href="/terms-and-conditions.html" class="underline">Terms</a></li>
+      </ul>
+    </nav>
+    <div>
+      <h3 class="font-semibold mb-2">Contact</h3>
+      <ul class="space-y-1 text-white/85">
+        <li>📞 +94 77 000 0000</li>
+        <li>📧 support@kiddoz.lk</li>
+        <li>📍 Colombo, Sri Lanka</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/20 py-3 text-center text-white/75 text-[13px]">
+    © <span id="year"></span> Kiddoz.lk. All rights reserved.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

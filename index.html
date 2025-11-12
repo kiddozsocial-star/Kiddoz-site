@@ -89,7 +89,13 @@
     .reveal{opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
     .reveal.show{opacity:1;transform:none}
     .header-shadow{box-shadow:0 6px 20px rgba(4,47,102,.08)}
-    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .line-clamp-2{
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-clamp: 2;
+    }
     @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
     .pulse-slow{animation:pulse 2.2s ease-in-out infinite}
     
@@ -271,7 +277,7 @@
       
       <!-- Cart with Preview -->
       <div class="relative" x-data="{showCart:false}" @mouseenter="showCart=true" @mouseleave="showCart=false">
-        <a href="/cart" class="relative p-2 rounded-xl2 hover:bg-slate-50" aria-label="Cart">
+        <a href="/cart.html" class="relative p-2 rounded-xl2 hover:bg-slate-50" aria-label="Cart">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-2.3 2.3c-.63.63-.18 1.7.71 1.7H17m0 0a2 2 0 100 4 2 2 0 000-4m-8 2a2 2 0 11-4 0 2 2 0 014 0"/>
           </svg>
@@ -950,7 +956,7 @@
           <li><a href="/diapering" class="hover:underline">Diapering</a></li>
           <li><a href="/feeding" class="hover:underline">Feeding</a></li>
           <li><a href="/toys" class="hover:underline">Toys & Learning</a></li>
-          <li><a href="/gear" class="hover:underline">Baby Gear</a></li>
+          <li><a href="/kiddoz-plp-unified-pro-v2.html" class="hover:underline">Baby Gear</a></li>
         </ul>
       </div>
       <div>
@@ -1112,7 +1118,7 @@ function home(){
       {title:'Diapering',copy:'Peaceful nights 💤',href:'/diapering',img:'images/di.webp'},
       {title:'Feeding',copy:'Every sip counts 🍼',href:'/feeding',img:'images/feeding.jpg'},
       {title:'Toys',copy:'Playtime magic 🧩',href:'/toys',img:'images/toy.jpg'},
-      {title:'Baby Gear',copy:'Ready for adventures 🚗',href:'/gear',img:'images/gear.jpg'},
+      {title:'Baby Gear',copy:'Ready for adventures 🚗',href:'/kiddoz-plp-unified-pro-v2.html',img:'images/gear.jpg'},
     ],
 
     init(){
