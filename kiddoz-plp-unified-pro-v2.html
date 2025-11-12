@@ -70,7 +70,7 @@
       </form>
       <div class="flex items-center gap-2">
         <a href="/customer/account/" class="p-2 text-[18px]" aria-label="My Account">👤</a>
-        <a href="/checkout/cart/" class="p-2 text-[18px]" aria-label="Shopping Cart">🛒</a>
+        <a href="/cart.html" class="p-2 text-[18px]" aria-label="Shopping Cart">🛒</a>
         <button class="md:hidden p-2 rounded-lg border border-line" @click="open=!open" aria-label="Menu">☰</button>
       </div>
     </div>
@@ -225,7 +225,7 @@
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-3 lg:gap-4">
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg','kiddoz-plp/public/media/catalog/product/stroller-foldable/stroller-foldable-2.jpg','kiddoz-plp/public/media/catalog/product/stroller-foldable/stroller-foldable-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/stroller-foldable/stroller-foldable-1.jpg','kiddoz-plp/public/media/catalog/product/stroller-foldable/stroller-foldable-2.jpg','/media/catalog/product/stroller-foldable/stroller-foldable-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/lightweight-foldable-stroller.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-20%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
@@ -233,22 +233,27 @@
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Kiddoz</div>
-    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/lightweight-foldable-stroller.html">Lightweight Foldable Stroller</a></h3>
-    <div class="mt-2 flex items-center gap-2">
-      <div class="text-success font-extrabold text-[18px]">Rs. 22,900</div>
-      <div class="text-slate-400 line-through text-[12px]">Rs. 28,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 5,600</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-3"><a href="/lightweight-foldable-stroller.html">Lightweight Foldable Stroller</a></h3><br>
+
+<div class="flex items-baseline gap-2">
+    <div class="text-success font-extrabold text-[20px]">Rs. 22,900</div>
+    <div class="text-slate-400 line-through text-[11px]">Rs. 28,500</div>
+  </div>
+	<div class="flex items-baseline gap-2">
+        <div class="text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">  You save Rs. 15,600  </div>
+		<div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] rounded bg-picton/10 bg-yellow-100 text-blue-700">💳 Credit Card 10%</span></div>
     </div>
-    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span></div>
+   
     <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
       <div>⭐ 4.7 (245)</div><div>Baby Gear LK • 4.9★</div>
     </div>
-    <a href="/lightweight-foldable-stroller.html" class="mt-auto w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
+    <a href="/lightweight-foldable-stroller.html" class="mt-2 w-full border-2 border-picton text-picton hover:bg-picton hover:text-white transition px-3 py-2 rounded-lg text-[13px] font-semibold text-center">View Details</a>
   </div>
 </article>
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/travel-system/travel-system-1.jpg','kiddoz-plp/public/media/catalog/product/travel-system/travel-system-2.jpg','kiddoz-plp/public/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/travel-system/travel-system-1.jpg','/media/catalog/product/travel-system/travel-system-2.jpg','/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/travel-system-3-in-1.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-8%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">Only 3 left</span>
@@ -256,12 +261,16 @@
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Velona</div>
-    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/travel-system-3-in-1.html">3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)</a></h3>
-    <div class="mt-2 flex items-center gap-2">
-      <div class="text-success font-extrabold text-[18px]">Rs. 84,900</div>
-      <div class="text-slate-400 line-through text-[12px]">Rs. 92,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 7,600</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-3"><a href="/travel-system-3-in-1.html">3‑in‑1 Travel System (Stroller + Car Seat + Bassinet)</a></h3>
+<div class="flex items-baseline gap-2">
+    <div class="text-success font-extrabold text-[20px]">Rs. 32,900</div>
+    <div class="text-slate-400 line-through text-[11px]">Rs. 38,500</div>
+  </div>
+	<div class="flex items-baseline gap-2">
+        <div class="text-[11px] px-2 py-2 rounded bg-picton/10 text-picton font-semibold leading-tight text-left">  You save Rs.<br> 15,600  </div>
+		<div class="mt-1 flex flex-wrap gap-1"></div>
     </div>
-    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-blue-50 text-blue-700">💳 HNB 0% 3 m</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-indigo-50 text-indigo-700">💳 Amex 0% 18 m</span></div>
+    <div class="mt-1 flex flex-wrap gap-1"></div>
     <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
       <div>⭐ 4.8 (112)</div><div>Velona Official • 5.0★</div>
     </div>
@@ -271,20 +280,24 @@
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-2.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-2.jpg','/media/catalog/product/carrier-ergonomic/carrier-ergonomic-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/ergonomic-carrier.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-17%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">🚚 Today</span>
-    <img :src="images[i]" src="/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg" alt="Baby Carrier Ergonomic (Newborn to Toddler)" class="w-full ratio-square object-cover" loading="lazy">
+    <img :src="images[i]" src="kiddoz-plp/public/media/catalog/product/carrier-ergonomic/carrier-ergonomic-1.jpg" alt="Baby Carrier Ergonomic (Newborn to Toddler)" class="w-full ratio-square object-cover" loading="lazy">
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">STAR KiDS</div>
     <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/ergonomic-carrier.html">Baby Carrier Ergonomic (Newborn to Toddler)</a></h3>
-    <div class="mt-2 flex items-center gap-2">
-      <div class="text-success font-extrabold text-[18px]">Rs. 7,900</div>
-      <div class="text-slate-400 line-through text-[12px]">Rs. 9,500</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 1,600</div>
+    <<div class="flex items-baseline gap-2">
+    <div class="text-success font-extrabold text-[20px]">Rs. 7,900</div>
+    <div class="text-slate-400 line-through text-[11px]">Rs. 9,500</div>
+  </div>
+	<div class="flex items-baseline gap-2">
+        <div class="text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">  You save Rs. 1,600  </div>
+		<div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] rounded bg-picton/10 bg-yellow-100 text-blue-700">💳 Credit Card 10%</span></div>
     </div>
-    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-amber-50 text-amber-700">💳 Sampath 10% CB</span><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-emerald-50 text-emerald-700">💳 HSBC 5% Off</span></div>
+	
     <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
       <div>⭐ 4.5 (68)</div><div>STAR KiDS • 4.8★</div>
     </div>
@@ -294,20 +307,24 @@
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['/media/catalog/product/booster-seat/booster-seat-1.jpg','/media/catalog/product/booster-seat/booster-seat-2.jpg','/media/catalog/product/booster-seat/booster-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/booster-seat/booster-seat-1.jpg','kiddoz-plp/public/media/catalog/product/booster-seat/booster-seat-2.jpg','kiddoz-plp/public/media/catalog/product/booster-seat/booster-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
-  <a href="/portable-booster-seat.html" class="relative block">
+  <a href="kiddoz-plp/public/portable-booster-seat.html" class="relative block">
     <span class="badge absolute top-2 right-2 bg-success text-white font-bold">In Stock</span>
-    <img :src="images[i]" src="/media/catalog/product/booster-seat/booster-seat-1.jpg" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
+    <img :src="images[i]" src="kiddoz-plp/public/media/catalog/product/booster-seat/booster-seat-1.jpg" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Baby Gear LK</div>
-    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/portable-booster-seat.html">Portable Booster Seat (Travel & Home Use)</a></h3>
-    <div class="mt-2 flex items-center gap-2">
-      <div class="text-success font-extrabold text-[18px]">Rs. 6,450</div>
-      
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-3"><a href="/portable-booster-seat.html">Portable Booster Seat (Travel & Home Use)</a></h3><br>
+    <div class="flex items-baseline gap-2">
+    <div class="text-success font-extrabold text-[20px]">Rs. 6,450</div>
+    <div class="text-slate-400 line-through text-[11px]"></div>
+  </div>
+	<div class="flex items-baseline gap-2">
+        <div class="text-[11px] px-2 py-2 rounded bg-picton/10 text-picton font-semibold leading-tight text-left">  You save Rs.<br> 15,600  </div>
+		<div class="mt-1 flex flex-wrap gap-1"></div>
     </div>
-    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-cyan-50 text-cyan-700">💳 NDB 0% 6 m</span></div>
+	
     <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
       <div>⭐ 4.3 (41)</div><div>Baby Gear LK • 4.9★</div>
     </div>
@@ -317,20 +334,23 @@
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-2.jpg','/media/catalog/product/jogger-stroller/jogger-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg','kiddoz-plp/public/media/catalog/product/jogger-stroller/jogger-stroller-2.jpg','kiddoz-plp/public/media/catalog/product/jogger-stroller/jogger-stroller-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/all-terrain-jogger-stroller.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-15%</span>
-    <img :src="images[i]" src="/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg" alt="All‑Terrain Jogger Stroller (3‑Wheel)" class="w-full ratio-square object-cover" loading="lazy">
+    <img :src="images[i]" src="kiddoz-plp/public/media/catalog/product/jogger-stroller/jogger-stroller-1.jpg" alt="All‑Terrain Jogger Stroller (3‑Wheel)" class="w-full ratio-square object-cover" loading="lazy">
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Outdoor Kids</div>
-    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/all-terrain-jogger-stroller.html">All‑Terrain Jogger Stroller (3‑Wheel)</a></h3>
-    <div class="mt-2 flex items-center gap-2">
-      <div class="text-success font-extrabold text-[18px]">Rs. 51,000</div>
-      <div class="text-slate-400 line-through text-[12px]">Rs. 60,000</div><div class="ml-auto text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">You save Rs. 9,000</div>
+    <h3 class="mt-0.5 font-semibold text-elephant clamp-2"><a href="/all-terrain-jogger-stroller.html">All‑Terrain Jogger Stroller (3‑Wheel)</a></h3>  <<div class="flex items-baseline gap-2">
+    <div class="text-success font-extrabold text-[20px]">Rs. 51,000</div>
+    <div class="text-slate-400 line-through text-[11px]">Rs. 60,000</div>
+  </div>
+	<div class="flex items-baseline gap-2">
+        <div class="text-[11px] px-2 py-0.5 rounded bg-picton/10 text-picton font-semibold">  You save Rs. 9,000  </div>
+		<div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] rounded bg-picton/10 bg-yellow-100 text-blue-700">💳 Credit Card 10%</span></div>
     </div>
-    <div class="mt-1 flex flex-wrap gap-1"><span class="px-2 py-0.5 text-[12px] font-semibold rounded-full bg-purple-50 text-purple-700">💳 NTB 0% 12 m</span></div>
+	
     <div class="mt-2 flex items-center justify-between text-[12px] text-slate-600">
       <div>⭐ 4.6 (54)</div><div>Outdoor Kids • 4.7★</div>
     </div>
@@ -340,11 +360,11 @@
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['/media/catalog/product/convertible-seat/convertible-seat-1.jpg','/media/catalog/product/convertible-seat/convertible-seat-2.jpg','/media/catalog/product/convertible-seat/convertible-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/convertible-seat/convertible-seat-1.jpg','kiddoz-plp/public/media/catalog/product/convertible-seat/convertible-seat-2.jpg','kiddoz-plp/public/media/catalog/product/convertible-seat/convertible-seat-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/convertible-car-seat.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-12%</span>
-    <img :src="images[i]" src="/media/catalog/product/convertible-seat/convertible-seat-1.jpg" alt="Convertible Car Seat (Birth to 4 Years)" class="w-full ratio-square object-cover" loading="lazy">
+    <img :src="images[i]" src="kiddoz-plp/public/media/catalog/product/convertible-seat/convertible-seat-1.jpg" alt="Convertible Car Seat (Birth to 4 Years)" class="w-full ratio-square object-cover" loading="lazy">
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Safe Ride</div>
@@ -432,7 +452,7 @@
 
 
 <article class="bg-white border border-line rounded-xl2 shadow-card overflow-hidden flex flex-col"
-         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/travel-system/travel-system-1.jpg','/media/catalog/product/travel-system/travel-system-2.jpg','/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
+         x-data="{ images: ['kiddoz-plp/public/media/catalog/product/travel-system/travel-system-1.jpg','kiddoz-plp/public/media/catalog/product/travel-system/travel-system-2.jpg','/media/catalog/product/travel-system/travel-system-3.jpg'], i: 0, t: null, start() { if (window.innerWidth >= 1024) { this.stop(); this.t = setInterval(() => { this.i = (this.i+1) % this.images.length }, 700); } }, stop() { if (this.t) { clearInterval(this.t); this.t = null; this.i=0; } } }"
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/travel-system-3-in-1.html" class="relative block">
     <span class="badge absolute top-2 left-2 bg-violet text-white font-bold">-8%</span><span class="badge absolute top-2 right-2 bg-success text-white font-bold">Only 3 left</span>
@@ -482,7 +502,7 @@
          @mouseenter="start()" @mouseleave="stop()">
   <a href="/portable-booster-seat.html" class="relative block">
     <span class="badge absolute top-2 right-2 bg-success text-white font-bold">In Stock</span>
-    <img :src="images[i]" src="/media/catalog/product/booster-seat/booster-seat-1.jpg" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
+    <img :src="images[i]" href="https://cdn.kiddoz.lk/media/catalog/product/n/d/ndcsvdcsdnc_2.webp?width=600&height=600&store=en&image-type=image" alt="Portable Booster Seat (Travel & Home Use)" class="w-full ratio-square object-cover" loading="lazy">
   </a>
   <div class="p-3 flex-1 flex flex-col">
     <div class="text-[11px] uppercase tracking-wide text-slate-500">Baby Gear LK</div>
